@@ -1,0 +1,222 @@
+{
+  "id": "57f5f3a1-138d-42da-9d33-fe0cc461ed68",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "authors": {
+      "name": "authors",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "fullname": {
+          "name": "fullname",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_draft": {
+          "name": "is_draft",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fork": {
+          "name": "fork",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "birth_date": {
+          "name": "birth_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "authors_fork_authors_id_fk": {
+          "name": "authors_fork_authors_id_fk",
+          "tableFrom": "authors",
+          "tableTo": "authors",
+          "columnsFrom": [
+            "fork"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "collections": {
+      "name": "collections",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "fullname": {
+          "name": "fullname",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parent_ref": {
+          "name": "parent_ref",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fork": {
+          "name": "fork",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "collections_parent_ref_collections_id_fk": {
+          "name": "collections_parent_ref_collections_id_fk",
+          "tableFrom": "collections",
+          "tableTo": "collections",
+          "columnsFrom": [
+            "parent_ref"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "collections_fork_collections_id_fk": {
+          "name": "collections_fork_collections_id_fk",
+          "tableFrom": "collections",
+          "tableTo": "collections",
+          "columnsFrom": [
+            "fork"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "quotes": {
+      "name": "quotes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "text": {
+          "name": "text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_draft": {
+          "name": "is_draft",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "author_ref": {
+          "name": "author_ref",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "collection_ref": {
+          "name": "collection_ref",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fork": {
+          "name": "fork",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "quotes_author_ref_authors_id_fk": {
+          "name": "quotes_author_ref_authors_id_fk",
+          "tableFrom": "quotes",
+          "tableTo": "authors",
+          "columnsFrom": [
+            "author_ref"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "quotes_collection_ref_collections_id_fk": {
+          "name": "quotes_collection_ref_collections_id_fk",
+          "tableFrom": "quotes",
+          "tableTo": "collections",
+          "columnsFrom": [
+            "collection_ref"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "quotes_fork_quotes_id_fk": {
+          "name": "quotes_fork_quotes_id_fk",
+          "tableFrom": "quotes",
+          "tableTo": "quotes",
+          "columnsFrom": [
+            "fork"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
