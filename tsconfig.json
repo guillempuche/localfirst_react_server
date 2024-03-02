@@ -1,0 +1,36 @@
+{
+	"compilerOptions": {
+		"target": "ES2022",
+		"useDefineForClassFields": true,
+		"lib": ["dom", "dom.iterable", "ES2022"],
+		"module": "ES2022",
+
+		/* Bundler mode */
+		"moduleResolution": "bundler",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"allowJs": false,
+		"jsx": "react-jsx",
+		"preserveSymlinks": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+
+		/* Linting */
+		"strict": true,
+		"skipLibCheck": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true
+	},
+	"include": ["src"],
+	"exclude": [
+		"node_modules",
+		"**/common_actors/",
+		"**/ui/editor.tsx",
+		"**/old/"
+	],
+	"references": [{ "path": "./tsconfig.node.json" }]
+}
