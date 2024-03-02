@@ -27,7 +27,7 @@ Displays the current setup of your ElectricSQL environment, including connection
 ## Step 3: Generate and Electrify SQL Migrations
 
 ```shell
-yarn database:esql:generate-2
+yarn database:esql:generate
 ```
 
 This command uses [Drizzle ORM](https://orm.drizzle.team/docs), based on your `database/schema.ts` file, to generate SQL migration files.
@@ -60,7 +60,7 @@ Establishes a connection to the ElectricSQL proxy to allow electrifying of the P
 ## Step 6: Migrate SQL Files
 
 ```shell
-yarn database:esql:migrate-2
+yarn database:esql:migrate
 ```
 
 Executes the prepared SQL migrations, including the electrification commands, updating your database schema accordingly.
@@ -70,7 +70,7 @@ Finally, you can close the proxy tunnel terminal process we were running.
 ## Step 7: Visually Inspect Your PostgreSQL Database
 
 ```shell
-yarn database:esql:interactive-2
+yarn database:esql:interactive
 ```
 
 This command launches Drizzle Studio, a web interface for Drizzle ORM. It allows you to visually explore and interact with your PostgreSQL database. After running electrification and migrations, Drizzle Studio makes it easy to verify the changes directly in your browser, ensuring that your tables are correctly set up for ElectricSQL synchronization.

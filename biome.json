@@ -30,6 +30,11 @@
 		}
 	},
 	"files": {
-		"ignore": [".yarn/*", "node_modules"]
+		"ignore": [
+			".yarn/*",
+			".pnp.*",
+			"node_modules",
+			"database/migrations/"
+		]
 	}
 }
