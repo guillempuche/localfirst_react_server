@@ -1,7 +1,7 @@
 # https://yarnpkg.com/getting-started/qa/#which-files-should-be-gitignored
 .pnp.*
 .yarn/*
-!.yarn/cache
+.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
@@ -28,3 +28,5 @@ database/pg_data
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+.env
