@@ -74,3 +74,24 @@ yarn database:esql:interactive
 ```
 
 This command launches Drizzle Studio, a web interface for Drizzle ORM. It allows you to visually explore and interact with your PostgreSQL database. After running electrification and migrations, Drizzle Studio makes it easy to verify the changes directly in your browser, ensuring that your tables are correctly set up for ElectricSQL synchronization.
+
+## New
+
+- install flyway
+  - <https://neon.tech/docs/guides/flyway>
+- configure flyway
+  - <https://documentation.red-gate.com/flyway/flyway-cli-and-api/configuration/parameters>
+  - naming sql files, undo migrations <https://documentation.red-gate.com/fd/migrations-184127470.html>
+- sql files:
+  - follow example
+- create Powersync user to your database. I'm using Neon dashboard "Roles" to create it instead of SQL migration:
+
+```sql
+CREATE ROLE powersync_role WITH REPLICATION LOGIN PASSWORD 'xxxxx';
+```
+
+- run migrations `flyway -configFiles="/Users/.../xstate-actor/database/flyway.toml" migrate`
+- Create a PowerSync account <https://powersync.journeyapps.com> and connect to Postgres database. In my case is Neon <https://docs.powersync.com/usage/installation/database-setup/neon>
+- deploy syncronization rules of PowerSync. Copy `sync_rules.yaml` to your PowerSync dashboard and deploy it.
+
+- To make the local SQLite database work, the dependencies need to be installed in node_modules in this project, not outse like Yarn PnP `<home>/.yarn/cache/...` outside this root project.

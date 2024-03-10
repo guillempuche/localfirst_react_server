@@ -10,6 +10,9 @@
 			"suspicious": {
 				"noExplicitAny": "warn",
 				"noShadowRestrictedNames": "warn"
+			},
+			"complexity": {
+				"noForEach": "warn"
 			}
 		}
 	},
@@ -30,11 +33,6 @@
 		}
 	},
 	"files": {
-		"ignore": [
-			".yarn/*",
-			".pnp.*",
-			"node_modules",
-			"database/migrations/"
-		]
+		"ignore": [".yarn/*", ".pnp.*", "node_modules", "old_*.ts"]
 	}
 }

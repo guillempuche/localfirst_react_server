@@ -1,8 +1,7 @@
 // import { migrate } from 'drizzle-orm/node-postgres/migrator'
 import { migrate } from 'drizzle-orm/postgres-js/migrator'
 
-import { pool } from './database_pool'
-import { db, postgresClient } from './database_postgres'
+import { db, postgresClient } from './schema'
 
 // Run migrations on the database, skipping the ones already applied
 migrate(db, { migrationsFolder: './database/migrations' })

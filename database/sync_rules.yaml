@@ -1,0 +1,14 @@
+bucket_definitions:
+  global:
+    data:
+      # Sync all authors
+      - SELECT * FROM authors
+
+      # Sync all collections
+      - SELECT * FROM collections
+
+      # Sync all quotes
+      - SELECT * FROM quotes
+
+      # Sync all editors, assuming you might want to filter something
+      - SELECT * FROM editors

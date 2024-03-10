@@ -1,0 +1,13 @@
+# Docs https://documentation.red-gate.com/flyway/flyway-cli-and-api/configuration/parameters
+
+[flyway]
+environment = "default"
+locations = ["filesystem:./migrations"]
+
+# Automatically call baseline when migrate is executed against a non-empty schema with no schema history table.
+baselineOnMigrate = true
+
+[environments.default]
+url = "jdbc:postgresql://ep-royal-meadow-a2moli7w.eu-central-1.aws.neon.tech/xstate_actor"
+user = "online_services.multimillionaire"
+password = "IN4L2csxgEtU"

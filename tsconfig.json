@@ -15,7 +15,11 @@
 		"preserveSymlinks": true,
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"]
+			"@common-actors": ["./src/common_actors/index"],
+			"@common-ui": ["./src/common_ui/index"],
+			"@database/*": ["./database/*"],
+			"@library/*": ["./src/bounded_contexts/library/*"],
+			"@mock": ["./src/mock/index"]
 		},
 
 		/* Linting */
@@ -25,7 +29,7 @@
 		"forceConsistentCasingInFileNames": true,
 		"noFallthroughCasesInSwitch": true
 	},
-	"include": ["src"],
+	"include": ["database", "src"],
 	"exclude": [
 		"node_modules",
 		"**/common_actors/",

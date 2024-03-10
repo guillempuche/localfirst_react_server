@@ -1,5 +1,5 @@
 import type { Config } from 'drizzle-kit'
-import { ELECTRIC_MIGRATION_PROXY } from './util'
+import { ELECTRIC_MIGRATION_PROXY } from './old_util'
 
 export default {
 	dbCredentials: {
@@ -9,5 +9,5 @@ export default {
 	out: './database/migrations',
 	schema: './database/schema.ts',
 	strict: true,
-	// verbose: true,
+	verbose: true,
 } satisfies Config
