@@ -7,9 +7,9 @@ import wasm from 'vite-plugin-wasm'
 export default defineConfig(({ mode }) => ({
 	resolve: {
 		alias: {
-			'@library': resolve(__dirname, './src/bounded_contexts/library'),
 			'@common-actors': resolve(__dirname, './src/common_actors/index'),
 			'@common-ui': resolve(__dirname, './src/common_ui/index'),
+			'@library': resolve(__dirname, './src/bounded_contexts/library'),
 			'@mock': resolve(__dirname, './src/mock/index'),
 		},
 	},

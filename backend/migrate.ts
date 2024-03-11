@@ -2,12 +2,12 @@ import { promises as fs } from 'node:fs'
 import * as path from 'node:path'
 import { FileMigrationProvider, Migrator } from 'kysely'
 
-import { db } from '../src/kysely'
+import { dbKysely } from '../src/db'
 
 async function migrateToLatest() {
 	try {
 		const migrator = new Migrator({
-			db,
+			db: dbKysely,
 			provider: new FileMigrationProvider({
 				fs,
 				path,
@@ -36,7 +36,7 @@ async function migrateToLatest() {
 			}
 
 		console.log('😴 Closing...')
-		await db.destroy()
+		await dbKysely.destroy()
 	} catch (error) {
 		console.error('❌ Migration failed')
 		console.error(error)

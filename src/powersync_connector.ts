@@ -1,7 +1,9 @@
-import type {
-	AbstractPowerSyncDatabase,
-	PowerSyncBackendConnector,
-	PowerSyncCredentials,
+import {
+	type AbstractPowerSyncDatabase,
+	type CrudEntry,
+	type PowerSyncBackendConnector,
+	type PowerSyncCredentials,
+	UpdateType,
 } from '@journeyapps/powersync-sdk-web'
 
 export class FakeConnector implements PowerSyncBackendConnector {
@@ -11,11 +13,39 @@ export class FakeConnector implements PowerSyncBackendConnector {
 		// - Supabase https://github.com/jeriko/nomadnotes/blob/main/src/library/powersync/SupabaseConnector.ts
 		return {
 			endpoint: '',
-			token: '',
+			// token: '',
+			token:
+				'eyJhbGciOiJSUzI1NiIsImtpZCI6InBvd2Vyc3luYy1kZXYtMzIyM2Q0ZTMifQ.eyJzdWIiOiJ1c2VyX2EiLCJpYXQiOjE3MTAwNjU1NTYsImlzcyI6Imh0dHBzOi8vcG93ZXJzeW5jLWFwaS5qb3VybmV5YXBwcy5jb20iLCJhdWQiOiJodHRwczovLzY1ZWE0MzdiYWYxNjU0ODQzYWVkMTNjZC5wb3dlcnN5bmMuam91cm5leWFwcHMuY29tIiwiZXhwIjoxNzEwMTA4NzU2fQ.n3soZixoCPZME1GTvyBo9RMsy_ugkQANk6o44exU-MqSU0yUTlbWZFdwbiNBiTwAiptfYoCg2oXo55DE0rkts9sTPLpgcb54rtjHFQTcf2Dq-m3NX-s1CQGPRR3bO-MG11amh4lXecGTqlWeZocN5ad8Bn_SG3BxKySSUoyk77ioGN3lAP70NY1zStH--dQsxxQE40OhtTG5EA_sNBeGt5hqLDPig2Da9b9dpw95nVGSwm3jQ-vRHDozoo-YNJktp3nuGrH5GuZJ_o3kN9YWyF8lL9WiprEj7LPY0_5tj1UC8-URkLqqjz7OwPQ84DjPI2zP1BJlJMpDbvh1u9G9vg',
 		}
 	}
 
-	async uploadData(database: AbstractPowerSyncDatabase): Promise<void> {}
+	async uploadData(database: AbstractPowerSyncDatabase): Promise<void> {
+		console.log('uploadData')
+		const transaction = await database.getNextCrudTransaction()
+
+		if (!transaction) {
+			return
+		}
+
+		try {
+			// Convert your transaction CRUD operations into a format suitable for your backend
+			const response = await fetch('http://localhost:3001/uploadData', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ transactions: transaction.crud }),
+			})
+
+			const responseData = await response.json()
+			console.log(responseData)
+
+			await transaction.complete()
+		} catch (error) {
+			console.error('Error uploading data:', error)
+			// Handle error, possibly retry or complete transaction based on the error type
+		}
+	}
 }
 
 // export class FakeConnector implements PowerSyncBackendConnector {

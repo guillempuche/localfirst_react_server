@@ -31,10 +31,11 @@ export const App = () => {
 		async function fetchQuotes() {
 			try {
 				console.log('Fetching quotes...')
-				// const quotes = await db.selectFrom('quotes').selectAll().execute()
+				const quotesDirect = await db.selectFrom('quotes').selectAll().execute()
 				const quotes = await powersync.getAll(queryAllQuotes)
 				// queryQuotes.map(quote => console.log(JSON.stringify(quote)))
-				console.log('Kysely quotes')
+				console.log(`QuotesDirect Kysely ${quotesDirect}`)
+				console.log('Quotes powersync')
 				quotes.map(quote => console.log(JSON.stringify(quote)))
 				setQuotes(quotes)
 			} catch (error) {

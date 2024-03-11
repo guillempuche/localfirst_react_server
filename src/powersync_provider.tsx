@@ -2,8 +2,8 @@ import { PowerSyncContext } from '@journeyapps/powersync-react'
 import type { AbstractPowerSyncDatabase } from '@journeyapps/powersync-sdk-web'
 import { type ReactNode, useEffect, useState } from 'react'
 
-import { FakeConnector } from './auth'
 import { powerSyncFactory } from './db'
+import { FakeConnector } from './powersync_connector'
 
 export const PowerSyncProvider = ({ children }: { children: ReactNode }) => {
 	const [powerSync, setPowerSync] = useState<AbstractPowerSyncDatabase | null>(

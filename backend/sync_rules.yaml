@@ -10,5 +10,5 @@ bucket_definitions:
       # Sync all quotes
       - SELECT * FROM quotes
 
-      # Sync all editors, assuming you might want to filter something
+      # Sync all editors
       - SELECT * FROM editors
