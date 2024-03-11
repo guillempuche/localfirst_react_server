@@ -1,5 +1,5 @@
 {
-  "name": "xstate-actor",
+  "name": "powersync_auth_stytch",
   "version": "0.0.1",
   "description": "",
   "type": "module",
@@ -18,10 +18,8 @@
     "@journeyapps/powersync-sdk-web": "^0.2.3",
     "@journeyapps/wa-sqlite": "^0.1.1",
     "@powersync/kysely-driver": "^0.1.1",
-    "@statelyai/inspect": "^0.2.5",
     "@stytch/react": "^15.0.0",
     "@stytch/vanilla-js": "^4.6.0",
-    "@xstate/react": "^4.1.0",
     "call-bind": "^1.0.7",
     "classnames": "^2.3.2",
     "date-fns": "^3.3.1",
@@ -32,10 +30,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-tooltip": "^5.26.0",
-    "tarant": "github:guillempuche/tarant#v4.0.0",
-    "ts-results": "^3.3.0",
-    "uuid": "^9.0.0",
-    "xstate": "^5.9.1"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.6.0",

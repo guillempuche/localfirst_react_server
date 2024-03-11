@@ -2,27 +2,16 @@ import {
 	usePowerSync,
 	usePowerSyncWatchedQuery,
 } from '@journeyapps/powersync-react'
-import { createBrowserInspector } from '@statelyai/inspect'
-import { useMachine } from '@xstate/react'
 import { useEffect, useState } from 'react'
 import { Tooltip } from 'react-tooltip'
 
-import { Button } from '@common-ui'
-import { Editor, LibraryItem } from '@library/ui'
-import { fypStateMachine } from '@library/ui/home_machine'
+import { Button } from '@components'
 import { mock_quotes } from '@mock'
 import { db } from './db'
-
-const inspector = createBrowserInspector({
-	autoStart: false,
-})
 
 const queryAllQuotes = 'SELECT * FROM quotes'
 
 export const App = () => {
-	const [state, send] = useMachine(fypStateMachine, {
-		inspect: inspector.inspect,
-	})
 	const powersync = usePowerSync()
 	const querySqlAllQuotes = usePowerSyncWatchedQuery(queryAllQuotes)
 	const [quotes, setQuotes] = useState<any[]>([])
@@ -48,27 +37,11 @@ export const App = () => {
 	// useEffect(() => {
 	// 	console.log(`PowerSync quotes ${querySqlAllQuotes.toString()}`)
 	// }, [querySqlAllQuotes])
-
-	const content = () => {
-		switch (true) {
-			case state.matches('idle'):
-				return 'Idle'
-			case state.matches('loading'):
-				return 'Loading... ⏳'
-			case state.matches('ok'):
-				return state.context.quotes.map(quote => quote.text)
-			case state.matches('error'):
-				// if (state.context.error.some) return state.context.error.toString()
-				return null
-			default:
-				return 'Problems... 🧑‍🔧'
-		}
-	}
+	// }
 
 	return (
 		<>
 			<div className='flex-1 overflow-x-hidden rounded-xl space-y-4'>
-				{content()}
 				{/* {renderQuotes()} */}
 			</div>
 			<div className='flex flex-col items-end space-y-1 pb-3'>

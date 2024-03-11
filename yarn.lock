@@ -953,22 +953,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@statelyai/inspect@npm:^0.2.5":
-  version: 0.2.5
-  resolution: "@statelyai/inspect@npm:0.2.5"
-  dependencies:
-    fast-safe-stringify: "npm:^2.1.1"
-    isomorphic-ws: "npm:^5.0.0"
-    partysocket: "npm:^0.0.25"
-    safe-stable-stringify: "npm:^2.4.3"
-    superjson: "npm:^1.13.3"
-    uuid: "npm:^9.0.1"
-  peerDependencies:
-    xstate: ^5.5.1
-  checksum: 10c0/f0c4828628acb666399bb627d4336af4ed6c7d329dbafb9c6b332d28db9f5a7b5320fab3d7dad39f486ab01cb7cf7fff2958a0b8d715eb957eb53714baca6576
-  languageName: node
-  linkType: hard
-
 "@stytch/core@npm:2.8.0":
   version: 2.8.0
   resolution: "@stytch/core@npm:2.8.0"
@@ -1409,22 +1393,6 @@ __metadata:
   peerDependencies:
     vite: ^4.2.0 || ^5.0.0
   checksum: 10c0/de1eec44d703f32e5b58e776328ca20793657fe991835d15b290230b19a2a08be5d31501d424279ae13ecfed28044c117b69d746891c8d9b92c69e8a8907e989
-  languageName: node
-  linkType: hard
-
-"@xstate/react@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "@xstate/react@npm:4.1.0"
-  dependencies:
-    use-isomorphic-layout-effect: "npm:^1.1.2"
-    use-sync-external-store: "npm:^1.0.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    xstate: ^5.6.2
-  peerDependenciesMeta:
-    xstate:
-      optional: true
-  checksum: 10c0/40e03fa0b6447891e789c07fe4bfd4bd077bd8566a9837d1c9672ffc633e99b545adf6dd1db8e158d1bb4dfdf06938055fbf7906183bb9be1640e4236f8307ac
   languageName: node
   linkType: hard
 
@@ -1892,15 +1860,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"copy-anything@npm:^3.0.2":
-  version: 3.0.5
-  resolution: "copy-anything@npm:3.0.5"
-  dependencies:
-    is-what: "npm:^4.1.8"
-  checksum: 10c0/01eadd500c7e1db71d32d95a3bfaaedcb839ef891c741f6305ab0461398056133de08f2d1bf4c392b364e7bdb7ce498513896e137a7a183ac2516b065c28a4fe
-  languageName: node
-  linkType: hard
-
 "create-require@npm:^1.1.0":
   version: 1.1.1
   resolution: "create-require@npm:1.1.1"
@@ -2212,13 +2171,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"event-target-shim@npm:^6.0.2":
-  version: 6.0.2
-  resolution: "event-target-shim@npm:6.0.2"
-  checksum: 10c0/e40b89effb1bd0fdd44dd198e3b61669c2bff89b680a8156c50480b5df8d4364208d1db09fbe823211005651558415691cb3ff72c22618eb154e55282b8b0481
-  languageName: node
-  linkType: hard
-
 "exponential-backoff@npm:^3.1.1":
   version: 3.1.1
   resolution: "exponential-backoff@npm:3.1.1"
@@ -2275,13 +2227,6 @@ __metadata:
     merge2: "npm:^1.3.0"
     micromatch: "npm:^4.0.4"
   checksum: 10c0/42baad7b9cd40b63e42039132bde27ca2cb3a4950d0a0f9abe4639ea1aa9d3e3b40f98b1fe31cbc0cc17b664c9ea7447d911a152fa34ec5b72977b125a6fc845
-  languageName: node
-  linkType: hard
-
-"fast-safe-stringify@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "fast-safe-stringify@npm:2.1.1"
-  checksum: 10c0/d90ec1c963394919828872f21edaa3ad6f1dddd288d2bd4e977027afff09f5db40f94e39536d4646f7e01761d704d72d51dce5af1b93717f3489ef808f5f4e4d
   languageName: node
   linkType: hard
 
@@ -2666,13 +2611,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-what@npm:^4.1.8":
-  version: 4.1.16
-  resolution: "is-what@npm:4.1.16"
-  checksum: 10c0/611f1947776826dcf85b57cfb7bd3b3ea6f4b94a9c2f551d4a53f653cf0cb9d1e6518846648256d46ee6c91d114b6d09d2ac8a07306f7430c5900f87466aae5b
-  languageName: node
-  linkType: hard
-
 "isexe@npm:^2.0.0":
   version: 2.0.0
   resolution: "isexe@npm:2.0.0"
@@ -2684,15 +2622,6 @@ __metadata:
   version: 3.1.1
   resolution: "isexe@npm:3.1.1"
   checksum: 10c0/9ec257654093443eb0a528a9c8cbba9c0ca7616ccb40abd6dde7202734d96bb86e4ac0d764f0f8cd965856aacbff2f4ce23e730dc19dfb41e3b0d865ca6fdcc7
-  languageName: node
-  linkType: hard
-
-"isomorphic-ws@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "isomorphic-ws@npm:5.0.0"
-  peerDependencies:
-    ws: "*"
-  checksum: 10c0/a058ac8b5e6efe9e46252cb0bc67fd325005d7216451d1a51238bc62d7da8486f828ef017df54ddf742e0fffcbe4b1bcc2a66cc115b027ed0180334cd18df252
   languageName: node
   linkType: hard
 
@@ -3219,15 +3148,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"partysocket@npm:^0.0.25":
-  version: 0.0.25
-  resolution: "partysocket@npm:0.0.25"
-  dependencies:
-    event-target-shim: "npm:^6.0.2"
-  checksum: 10c0/ecc7c8314c649878383b686773309b23fb905f35f27d25139db09633b7f14733865ff378fa78838c25dc42141732b81bb35a2f12ba4c2e9e4106f86afd54b21e
-  languageName: node
-  linkType: hard
-
 "path-key@npm:^3.1.0":
   version: 3.1.1
   resolution: "path-key@npm:3.1.1"
@@ -3547,6 +3467,51 @@ __metadata:
   languageName: node
   linkType: hard
 
+"powersync_auth_stytch@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "powersync_auth_stytch@workspace:."
+  dependencies:
+    "@biomejs/biome": "npm:^1.6.0"
+    "@heroicons/react": "npm:^2.1.1"
+    "@journeyapps/powersync-react": "npm:^1.0.5"
+    "@journeyapps/powersync-sdk-web": "npm:^0.2.3"
+    "@journeyapps/wa-sqlite": "npm:^0.1.1"
+    "@powersync/kysely-driver": "npm:^0.1.1"
+    "@stytch/react": "npm:^15.0.0"
+    "@stytch/vanilla-js": "npm:^4.6.0"
+    "@types/call-bind": "npm:^1"
+    "@types/express": "npm:^4.17.21"
+    "@types/node": "npm:^20.11.20"
+    "@types/pg": "npm:^8.11.2"
+    "@types/react": "npm:^18.2.47"
+    "@types/react-dom": "npm:^18.2.18"
+    "@types/uuid": "npm:^9.0.0"
+    "@vitejs/plugin-react": "npm:^4.2.1"
+    autoprefixer: "npm:^10.4.13"
+    call-bind: "npm:^1.0.7"
+    classnames: "npm:^2.3.2"
+    date-fns: "npm:^3.3.1"
+    dotenv: "npm:^16.4.5"
+    express: "npm:^4.18.3"
+    kysely: "npm:^0.27.2"
+    nodemon: "npm:^3.1.0"
+    pg: "npm:^8.11.3"
+    postcss: "npm:^8.4.21"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
+    react-tooltip: "npm:^5.26.0"
+    rollup: "npm:^4.12.1"
+    tailwindcss: "npm:^3.2.7"
+    ts-node: "npm:^10.9.2"
+    typescript: "npm:^5.4.2"
+    uuid: "npm:^9.0.0"
+    vite: "npm:^5.1.5"
+    vite-node: "npm:^1.3.1"
+    vite-plugin-top-level-await: "npm:^1.4.1"
+    vite-plugin-wasm: "npm:^3.3.0"
+  languageName: unknown
+  linkType: soft
+
 "proc-log@npm:^3.0.0":
   version: 3.0.0
   resolution: "proc-log@npm:3.0.0"
@@ -3839,13 +3804,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"safe-stable-stringify@npm:^2.4.3":
-  version: 2.4.3
-  resolution: "safe-stable-stringify@npm:2.4.3"
-  checksum: 10c0/81dede06b8f2ae794efd868b1e281e3c9000e57b39801c6c162267eb9efda17bd7a9eafa7379e1f1cacd528d4ced7c80d7460ad26f62ada7c9e01dec61b2e768
-  languageName: node
-  linkType: hard
-
 "safer-buffer@npm:>= 2.1.2 < 3, safer-buffer@npm:>= 2.1.2 < 3.0.0":
   version: 2.1.2
   resolution: "safer-buffer@npm:2.1.2"
@@ -4103,15 +4061,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"superjson@npm:^1.13.3":
-  version: 1.13.3
-  resolution: "superjson@npm:1.13.3"
-  dependencies:
-    copy-anything: "npm:^3.0.2"
-  checksum: 10c0/389a0a0c86884dd0558361af5d6d7f37102b71dda9595a665fe8b39d1ba0e57c859e39a9bd79b6f1fde6f4dcceac49a1c205f248d292744b2a340ee52846efdb
-  languageName: node
-  linkType: hard
-
 "supports-color@npm:^5.3.0, supports-color@npm:^5.5.0":
   version: 5.5.0
   resolution: "supports-color@npm:5.5.0"
@@ -4172,15 +4121,6 @@ __metadata:
     mkdirp: "npm:^1.0.3"
     yallist: "npm:^4.0.0"
   checksum: 10c0/02ca064a1a6b4521fef88c07d389ac0936730091f8c02d30ea60d472e0378768e870769ab9e986d87807bfee5654359cf29ff4372746cc65e30cbddc352660d8
-  languageName: node
-  linkType: hard
-
-"tarant@github:guillempuche/tarant#v4.0.0":
-  version: 4.0.0
-  resolution: "tarant@https://github.com/guillempuche/tarant.git#commit=a2fcc69256e8e7d66de9e4f457042f1ef9f98e8c"
-  dependencies:
-    tslib: "npm:2.6.2"
-  checksum: 10c0/8b3b13121c5636c1e22bf136fb25a4dcf7fe23ae8436ca6cd734ebbacb4de9c9baa7e61017a26a46b4ffb6d44c3d1b2b42c57b1e6a3be446308cbfdbbaa7330d
   languageName: node
   linkType: hard
 
@@ -4281,14 +4221,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-results@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "ts-results@npm:3.3.0"
-  checksum: 10c0/507659005733dd102895e868fe1de6f4c39998bcf188863bdc2d18dc5e8ced57be2e83fe9ee53adbabc414fd53e26e8654c7fa0273d2668decc1731d274dbf74
-  languageName: node
-  linkType: hard
-
-"tslib@npm:2.6.2, tslib@npm:^2.4.0":
+"tslib@npm:^2.4.0":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 10c0/e03a8a4271152c8b26604ed45535954c0a45296e32445b4b87f8a5abdb2421f40b59b4ca437c4346af0f28179780d604094eb64546bee2019d903d01c6c19bdb
@@ -4375,27 +4308,6 @@ __metadata:
   bin:
     update-browserslist-db: cli.js
   checksum: 10c0/e52b8b521c78ce1e0c775f356cd16a9c22c70d25f3e01180839c407a5dc787fb05a13f67560cbaf316770d26fa99f78f1acd711b1b54a4f35d4820d4ea7136e6
-  languageName: node
-  linkType: hard
-
-"use-isomorphic-layout-effect@npm:^1.1.2":
-  version: 1.1.2
-  resolution: "use-isomorphic-layout-effect@npm:1.1.2"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-  checksum: 10c0/d8deea8b85e55ac6daba237a889630bfdbf0ebf60e9e22b6a78a78c26fabe6025e04ada7abef1e444e6786227d921e648b2707db8b3564daf757264a148a6e23
-  languageName: node
-  linkType: hard
-
-"use-sync-external-store@npm:^1.0.0":
-  version: 1.2.0
-  resolution: "use-sync-external-store@npm:1.2.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/ac4814e5592524f242921157e791b022efe36e451fe0d4fd4d204322d5433a4fc300d63b0ade5185f8e0735ded044c70bcf6d2352db0f74d097a238cebd2da02
   languageName: node
   linkType: hard
 
@@ -4612,63 +4524,6 @@ __metadata:
     string-width: "npm:^5.0.1"
     strip-ansi: "npm:^7.0.1"
   checksum: 10c0/138ff58a41d2f877eae87e3282c0630fc2789012fc1af4d6bd626eeb9a2f9a65ca92005e6e69a75c7b85a68479fe7443c7dbe1eb8fbaa681a4491364b7c55c60
-  languageName: node
-  linkType: hard
-
-"xstate-actor@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "xstate-actor@workspace:."
-  dependencies:
-    "@biomejs/biome": "npm:^1.6.0"
-    "@heroicons/react": "npm:^2.1.1"
-    "@journeyapps/powersync-react": "npm:^1.0.5"
-    "@journeyapps/powersync-sdk-web": "npm:^0.2.3"
-    "@journeyapps/wa-sqlite": "npm:^0.1.1"
-    "@powersync/kysely-driver": "npm:^0.1.1"
-    "@statelyai/inspect": "npm:^0.2.5"
-    "@stytch/react": "npm:^15.0.0"
-    "@stytch/vanilla-js": "npm:^4.6.0"
-    "@types/call-bind": "npm:^1"
-    "@types/express": "npm:^4.17.21"
-    "@types/node": "npm:^20.11.20"
-    "@types/pg": "npm:^8.11.2"
-    "@types/react": "npm:^18.2.47"
-    "@types/react-dom": "npm:^18.2.18"
-    "@types/uuid": "npm:^9.0.0"
-    "@vitejs/plugin-react": "npm:^4.2.1"
-    "@xstate/react": "npm:^4.1.0"
-    autoprefixer: "npm:^10.4.13"
-    call-bind: "npm:^1.0.7"
-    classnames: "npm:^2.3.2"
-    date-fns: "npm:^3.3.1"
-    dotenv: "npm:^16.4.5"
-    express: "npm:^4.18.3"
-    kysely: "npm:^0.27.2"
-    nodemon: "npm:^3.1.0"
-    pg: "npm:^8.11.3"
-    postcss: "npm:^8.4.21"
-    react: "npm:^18.2.0"
-    react-dom: "npm:^18.2.0"
-    react-tooltip: "npm:^5.26.0"
-    rollup: "npm:^4.12.1"
-    tailwindcss: "npm:^3.2.7"
-    tarant: "github:guillempuche/tarant#v4.0.0"
-    ts-node: "npm:^10.9.2"
-    ts-results: "npm:^3.3.0"
-    typescript: "npm:^5.4.2"
-    uuid: "npm:^9.0.0"
-    vite: "npm:^5.1.5"
-    vite-node: "npm:^1.3.1"
-    vite-plugin-top-level-await: "npm:^1.4.1"
-    vite-plugin-wasm: "npm:^3.3.0"
-    xstate: "npm:^5.9.1"
-  languageName: unknown
-  linkType: soft
-
-"xstate@npm:^5.9.1":
-  version: 5.9.1
-  resolution: "xstate@npm:5.9.1"
-  checksum: 10c0/97b7e4051072917f29f32ea60823d66095ada320a86b6b1493e632bb8ea79ba6f93e2d0b310d282ad0dd152252894aa6043d81f351d7952263a73d6efd6d1e2e
   languageName: node
   linkType: hard
 

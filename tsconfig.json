@@ -15,9 +15,7 @@
 		"preserveSymlinks": true,
 		"baseUrl": ".",
 		"paths": {
-			"@common-actors": ["./src/common_actors/index"],
-			"@common-ui": ["./src/common_ui/index"],
-			"@library/*": ["./src/bounded_contexts/library/*"],
+			"@components": ["src/components/index"],
 			"@mock": ["./src/mock/index"]
 		},
 
@@ -29,11 +27,6 @@
 		"noFallthroughCasesInSwitch": true
 	},
 	"include": ["backend", "src"],
-	"exclude": [
-		"node_modules",
-		"**/common_actors/",
-		"**/ui/editor.tsx",
-		"**/old/"
-	],
+	"exclude": ["node_modules"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }
