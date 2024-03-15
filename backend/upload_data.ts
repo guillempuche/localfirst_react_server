@@ -30,7 +30,7 @@ export async function uploadDataHandler(req: Request, res: Response) {
 				case UpdateType.PATCH:
 					await dbKysely
 						.updateTable(type as TableName)
-						.set(data)
+						.set(data as Record<string, any>)
 						.where('id', '=', id)
 						.execute()
 					break
