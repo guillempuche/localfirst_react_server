@@ -1,97 +1,145 @@
-# Quick Guide to Setting Up PostgreSQL and ElectricSQL
+# React Local-First Web Application with PowerSync and Cloud Database Sync
+
+![Demostration](docs/demo-video.png)
+
+This guide walks you through setting up a React application designed with a local-first database philosophy, enabling seamless offline functionality and synchronization with cloud databases. By leveraging PowerSync for local data management and integrating cloud database synchronization, this setup is also extendable to React Native applications. Whether you're new to React or looking to implement offline capabilities in your projects, this guide provides a step-by-step approach to get you started.
 
 ## Prerequisites
 
-Ensure you have Docker and Node.js installed. These will be used to run database services and execute command-line instructions.
+- Install Yarn on your computer from [yarnpkg.com](https://yarnpkg.com/).
 
-## Step 1: Start Services
+## Steps
 
-Run the Docker app, then this command:
+### Install Dependencies
 
-```shell
-yarn database:esql:start
-```
+- Execute `yarn install` to install the necessary dependencies.
+- Ensure dependencies are installed in the `node_modules` of this project to support local SQLite database functionality.
 
-This command launches both your PostgreSQL database and ElectricSQL services in Docker, making them ready for use.
+### Prepare Environment Variables
 
-## Step 2: Show Configuration
+- Duplicate the `.example.env` file and rename it to `.env`.
 
-In a new terminal, run the following command:
+### Create a Postgres Database
 
-```shell
-yarn database:esql:show-config
-```
+- For database services, I use [Neon](https://neon.tech/). However, any Postgres provider is suitable.
+- Create a Neon account, set up a database with a username and password, and save these credentials in the `.env` file.
 
-Displays the current setup of your ElectricSQL environment, including connections and service details.
+> IMPORTANT: A localhost database cannot be used since PowerSync services require internet access to connect to your database.
 
-## Step 3: Generate and Electrify SQL Migrations
+### Create an Authentication Account
 
-```shell
-yarn database:esql:generate
-```
+PowerSync requires JWKS tokens for authentication. Visit [PowerSync Authentication](https://docs.powersync.com/architecture/powersync-service#authentication) for more details.
 
-This command uses [Drizzle ORM](https://orm.drizzle.team/docs), based on your `database/schema.ts` file, to generate SQL migration files.
+We use [Stytch](https://stytch.com/) for authentication due to its compatibility with React and React Native, and its cost-effectiveness.
 
-After generating these files, you need to manually add ElectricSQL statements to electrify your tables. This is necessary because ElectricSQL extends PostgreSQL with custom features for data synchronization, which are not part of the standard PostgreSQL language. Adding `ENABLE ELECTRIC` to your tables makes them ready for ElectricSQL's sync services. Because these statements are specific to ElectricSQL, running them requires the proxy tunneling setup, ensuring that ElectricSQL can process and understand these custom commands.
+Steps for setting up Stytch:
 
-## Step 4: Electrify Your Tables
+- Register an account and create a project on Stytch.
+- Copy the project's `public token` from [Stytch's API Keys](https://stytch.com/dashboard/api-keys?env=test) and paste it into `.env`.
+- Add your localhost domain `http://localhost:3000` to your Stytch project [SDK Configuration](https://stytch.com/dashboard/sdk-configuration?env=test).
+- Ensure the email link is enabled under the `Authentication products` section.
+- Set the redirection URI to `http://localhost:3000/authenticate` in [Stytch's Redirect URLs](https://stytch.com/dashboard/redirect-urls?env=test) for login redirection.
+- To set up email link authentication (magic link), refer to [Stytch's Magic Links Guide](https://stytch.com/docs/guides/magic-links/email-magic-links/api).
 
-In your generated migration file `database/migrations/**.sql`, append the following to electrify your tables:
+_A screenshot of domain and email link settings on Stytch_
+![Stytch Domain and Email Link Settings](docs/stytch-domain-and-email-link.png)
 
-```sql
--- After all table alterations are complete, enable Electric SQL
-ALTER TABLE table_name_1 ENABLE ELECTRIC;
-ALTER TABLE table_name_2 ENABLE ELECTRIC;
-...
-```
+### Configure PowerSync and Authentication Tokens
 
-Replace `table_name_1`, `table_name_2`, etc., with the actual names of your tables.
+To integrate PowerSync with your React application and set up authentication tokens, follow these comprehensive steps:
 
-## Step 5: Set Up Proxy Tunneling
+1. Create a PowerSync account:
+   - Navigate to [PowerSync's signup page](https://powersync.journeyapps.com) and create a new account.
+2. Set up database connection:
+   - Once your account is active, create a new database instance. This instance should have the same name as your Neon database to ensure consistency.
+   - PowerSync needs to connect to your Postgres database. For setting up a connection to Neon, follow the guide provided by PowerSync specific to Neon at [PowerSync Database Setup for Neon](https://docs.powersync.com/usage/installation/database-setup/neon).
+     - Remember, Neon uses the default port `5432`.
+     - Certificates are not required for Neon; leave this field blank.
+     - The URI format for Neon is typically: `postgresql://<neon_username>@<neon_host_name>:5432/<neon_database_name>`.
 
-In a new terminal, run the following command:
+3. Configure authentication service (Stytch) with PowerSync:
+   - In your PowerSync account, navigate to the database instance you created and select the `Client auth` tab.
+   - You will integrate Stytch's authentication service here. This involves using Stytch's JSON Web Key Set (JWKS) URI and JWT settings.
+     - Disable options like `Use Supabase Auth` and `Enable development tokens` if they are not relevant to your setup.
+     - Find Stytch's JWKS URI in your Stytch dashboard under [Custom Claim Templates](https://stytch.com/dashboard/custom-claim-templates?env=test). This URI will be used in PowerSync's authentication configuration.
+     - The JWT Audience and custom audience field in Stytch should match your PowerSync instance URL. This ensures that tokens are correctly validated against your application.
 
-```shell
-yarn database:esql:proxy-tunnel
-```
+4. Copy the project instance URL from PowerSync, found in the `General` tab of your database instance setup. This URL should be entered into the corresponding variable in your `.env` file, linking your application directly to the PowerSync service.
 
-Establishes a connection to the ElectricSQL proxy to allow electrifying of the Postgres tables by ElectricSQL services.
+![PowerSync Authentication Configuration](docs/powersync-auth.png)
+![Stytch Tokens Settings](docs/stytch-jwt.png)
 
-## Step 6: Migrate SQL Files
+### SQL Files for Database Configuration
 
-```shell
-yarn database:esql:migrate
-```
+Setting up your Postgres database correctly is crucial for the successful operation of your application. This involves creating SQL migration files that will structure your database, set up necessary roles, and optionally prefill it with data. Here's how to go about it:
 
-Executes the prepared SQL migrations, including the electrification commands, updating your database schema accordingly.
+1. Create migration files:
+   - You will need to create SQL files that define the structure of your database, including tables, relationships, and any initial data you wish to insert. These are known as migration files. You can copy the ones in `backend/migrations` folder.
+2. Naming convention:
+   - Follow a consistent naming convention for your migration files to maintain order and clarity. A common practice is to prefix filenames with sequential numbers (e.g., `01__create_tables.sql`, `02__setup_powersync_user.sql`) to indicate the order of execution. For more on naming conventions, see [Red Gate's Migrations Documentation](https://documentation.red-gate.com/fd/migrations-184127470.html).
+3. Contents of migration files:
+   - **Tables:** The first migration file should define all the tables and their fields required by your application.
+   - **PowerSync user:** To integrate with PowerSync, you may need to create a specific user role in your database that PowerSync can use to perform operations. Depending on your database provider, this step may vary. For Neon users, it's recommended to create this user through the Neon dashboard's "Roles" feature, following the guide provided at [PowerSync Database Setup for Neon](https://docs.powersync.com/usage/installation/database-setup/neon).
+   - **(Optional) Prefill data:** If your application benefits from having preloaded data (e.g., demo accounts, initial settings), you can include this in a separate migration file. This step is optional but can be useful for testing and demonstration purposes.
 
-Finally, you can close the proxy tunnel terminal process we were running.
+4. Storing migration files:
+   - Place all your migration files in a dedicated directory within your project, such as `backend/migrations`, to keep them organized and easily accessible for deployment.
 
-## Step 7: Visually Inspect Your PostgreSQL Database
+### Upload the Files to Your Postgres Database
 
-```shell
-yarn database:esql:interactive
-```
+To apply your SQL migration files to your Postgres database, you can use one of two methods provided in this project: a custom script or the Flyway command-line tool. These methods facilitate the migration process, setting up your database structure for the application.
 
-This command launches Drizzle Studio, a web interface for Drizzle ORM. It allows you to visually explore and interact with your PostgreSQL database. After running electrification and migrations, Drizzle Studio makes it easy to verify the changes directly in your browser, ensuring that your tables are correctly set up for ElectricSQL synchronization.
+#### Using a Script
 
-## New
+1. Run the custom script
+   - This project includes a script to automate the migration process. To execute this script, simply run the following command in your terminal:
 
-- install flyway
-  - <https://neon.tech/docs/guides/flyway>
-- configure flyway
-  - <https://documentation.red-gate.com/flyway/flyway-cli-and-api/configuration/parameters>
-  - naming sql files, undo migrations <https://documentation.red-gate.com/fd/migrations-184127470.html>
-- sql files:
-  - follow example
-- create Powersync user to your database. I'm using Neon dashboard "Roles" to create it instead of SQL migration:
+     ```sh
+     yarn database:migrate
+     ```
 
-```sql
-CREATE ROLE powersync_role WITH REPLICATION LOGIN PASSWORD 'xxxxx';
-```
+   - This command will locate the SQL migration files in your `backend/migrations` directory and apply them to your Postgres database, adhering to the order specified by the file names.
 
-- run migrations `flyway -configFiles="/Users/.../xstate-actor/database/flyway.toml" migrate`
-- Create a PowerSync account <https://powersync.journeyapps.com> and connect to Postgres database. In my case is Neon <https://docs.powersync.com/usage/installation/database-setup/neon>
-- deploy syncronization rules of PowerSync. Copy `sync_rules.yaml` to your PowerSync dashboard and deploy it.
+#### Using Flyway
 
-- To make the local SQLite database work, the dependencies need to be installed in node_modules in this project, not outse like Yarn PnP `<home>/.yarn/cache/...` outside this root project.
+Flyway is an industry-standard tool for managing database migrations with more extensive functionality. If you prefer using Flyway for applying your SQL files:
+
+1. Installation:
+   - Ensure Flyway is installed on your machine. If you haven't installed it yet, refer to the official [Flyway documentation](https://flywaydb.org/documentation/usage/commandline/#download-and-installation) for installation instructions.
+
+2. Configuration:
+   - A Flyway configuration file (`flyway.toml` or similar) should already be part of your project setup. This file contains all necessary configurations for connecting Flyway to your Postgres database.
+
+3. Run migrations:
+   - To apply the migrations using Flyway, run the following command:
+
+     ```sh
+     flyway -configFiles="/<computer_path_to_repo>/backend/flyway.toml" migrate
+     ```
+
+   - Replace `"/path/to/your/backend/flyway.toml"` with the actual path to your Flyway configuration file. This command instructs Flyway to apply the SQL migration files found in the locations specified within your configuration file.
+
+### Deploy PowerSync Synchronization Rules
+
+Deploy your database synchronization rules to PowerSync by copying the `database/sync_rules.yaml` file to your PowerSync project as outlined in [PowerSync Sync Rules Documentation](https://docs.powersync.com/usage/sync-rules).
+
+### Running the Server and Web Application
+
+- Start the Express server handling SQL modifications via PowerSync with `yarn server`.
+- Launch the React application with `yarn web`.
+- Open `http://localhost:3000` in two browser tabs to test real-time data synchronization across instances.
+- Open browsers' console to see the logs. You should enable all types of logs because the React web uses `console.debug`.
+
+![Two Tabs Running The React Web](docs/web.png)
+
+## Extra
+
+Debugging in Chrome with VSCode:
+
+1. Launch both web and server.
+2. Start Chrome with remote debugging on port `9222`, following the [VSCode Chrome Debug Extension Guide](https://github.com/Microsoft/vscode-chrome-debug?tab=readme-ov-file#attach).
+3. Access the web server on Chrome and attach the VSCode debugger.
+
+## Resources
+
+- [Kysely](https://kysely.dev/docs/), a query builder for fetching SQL data, alongside PowerSync. API documentation and examples are available at [Kysely API Docs](https://kysely-org.github.io/kysely-apidoc) and [Kysely GitHub](https://github.com/kysely-org/kysely/blob/master/example), respectively.
