@@ -1,6 +1,6 @@
 # React Local-First Web Application with PowerSync and Cloud Database Sync
 
-![Demostration](docs/demo-video.png)
+![Demostration](docs/demo-video.gif)
 
 This guide walks you through setting up a React application designed with a local-first database philosophy, enabling seamless offline functionality and synchronization with cloud databases. By leveraging PowerSync for local data management and integrating cloud database synchronization, this setup is also extendable to React Native applications. Whether you're new to React or looking to implement offline capabilities in your projects, this guide provides a step-by-step approach to get you started.
 
