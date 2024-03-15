@@ -1,0 +1,39 @@
+{
+	// Utilitzeu IntelliSense per aprendre sobre els atributs possibles.
+	// Passeu el cursor per sobre per veure les descripcions dels atributs existents.
+	// Per a més informació, visiteu: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Chrome",
+			"type": "chrome",
+			"request": "launch",
+			"urlFilter": "http://localhost:3000/*",
+			"webRoot": "${workspaceFolder}/src",
+			"sourceMaps": true
+		},
+		{
+			"name": "Attach Chrome",
+			"type": "chrome",
+			"request": "attach",
+			"port": 9222,
+			// "urlFilter": "http://localhost:3000/*",
+			"webRoot": "${workspaceFolder}/src",
+			"sourceMaps": true
+		},
+		{
+			"name": "Firefox",
+			"type": "firefox",
+			"request": "launch",
+			"reAttach": true,
+			"url": "http://localhost:3000",
+			"webRoot": "${workspaceFolder}/src",
+			"pathMappings": [
+				{
+					"url": "http://localhost:3000/src",
+					"path": "${workspaceFolder}/src"
+				}
+			]
+		}
+	]
+}

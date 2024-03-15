@@ -32,7 +32,7 @@ export const Button: React.FC<ButtonPropsDefault> = ({
 			data-tooltip-variant='info'
 			{...props}
 			className={classNames(
-				'flex items-center h-fit rounded-2xl px-4 py-2 focus:ring-4 focus:outline-none focus:ring-green-700 text-sm text-center text-white',
+				'flex items-center h-fit rounded-2xl px-4 py-2 focus:ring-4 focus:outline-none focus:ring-green-700 text-sm text-center text-white whitespace-nowrap',
 				disabled ? 'bg-gray-500' : 'bg-green-600 hover:bg-green-500',
 				className,
 			)}

@@ -7,8 +7,10 @@ import wasm from 'vite-plugin-wasm'
 export default defineConfig(({ mode }) => ({
 	resolve: {
 		alias: {
-			'@components': resolve(__dirname, './src/components/index'),
-			'@mock': resolve(__dirname, './src/mock/index'),
+			'@backend/*': resolve(__dirname, 'backend/*'),
+			'@components': resolve(__dirname, 'src/components/index'),
+			'@mock': resolve(__dirname, 'src/mock/index'),
+			'@providers': resolve(__dirname, 'src/providers/index'),
 		},
 	},
 	server: {
@@ -24,7 +26,7 @@ export default defineConfig(({ mode }) => ({
 		},
 	},
 	build: {
-		outDir: './dist',
+		outDir: 'dist',
 		sourcemap: mode !== 'production',
 		// rollupOptions: {
 		// 	input: resolve(__dirname, 'src/index.html'),

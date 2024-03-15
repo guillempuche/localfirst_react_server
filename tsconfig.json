@@ -15,8 +15,10 @@
 		"preserveSymlinks": true,
 		"baseUrl": ".",
 		"paths": {
+			"@backend/*": ["backend/*"],
 			"@components": ["src/components/index"],
-			"@mock": ["./src/mock/index"]
+			"@mock": ["./src/mock/index"],
+			"@providers": ["src/providers/index"]
 		},
 
 		/* Linting */

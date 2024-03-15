@@ -7,7 +7,7 @@ import {
 } from '@journeyapps/powersync-sdk-web'
 import { wrapPowerSyncWithKysely } from '@powersync/kysely-driver'
 
-import type { Database } from 'database/schema'
+import type { Database } from '@backend/schema'
 
 // =============================================
 // SQLite schema & tables
@@ -19,7 +19,7 @@ export const sqliteSchema = new Schema([
 			new Column({ name: 'id', type: ColumnType.TEXT }),
 			new Column({ name: 'text', type: ColumnType.TEXT }),
 			new Column({ name: 'author_id', type: ColumnType.TEXT }),
-			new Column({ name: 'collection_id', type: ColumnType.TEXT }),
+			new Column({ name: 'collections_id', type: ColumnType.TEXT }),
 			new Column({ name: 'created_at', type: ColumnType.TEXT }),
 		],
 	}),
@@ -68,3 +68,34 @@ export const powerSyncFactory = new WASQLitePowerSyncDatabaseOpenFactory({
 export const db = wrapPowerSyncWithKysely<Database>(
 	powerSyncFactory.getInstance(),
 )
+
+export interface Quote {
+	id: string
+	text: string
+	author_id: string
+	collections_id: string
+	created_at: string
+}
+
+export interface Author {
+	id: string
+	fullname: string
+	birth_date: string
+}
+
+export interface Collection {
+	id: string
+	name: string
+	parent_id: string
+}
+
+export interface Editor {
+	id: string
+	text: string
+	fullname: string
+	birth_date: string // Consider using Date or string
+	author_id: string
+	collections_id: string
+	quote_ref: string
+	author_ref: string
+}

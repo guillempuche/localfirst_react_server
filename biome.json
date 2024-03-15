@@ -33,6 +33,12 @@
 		}
 	},
 	"files": {
-		"ignore": [".yarn/*", ".pnp.*", "node_modules", "old_*.ts"]
+		"ignore": [
+			".yarn/*",
+			".pnp.*",
+			"node_modules",
+			"old_*.ts",
+			".vscode"
+		]
 	}
 }

@@ -1,5 +1,6 @@
 import { useStytch, useStytchUser } from '@stytch/react'
-import { type ReactNode, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 /*
 During both the Magic link and OAuth flow, Stytch will redirect the user back to your application to a specified redirect URL (see Login.js). 
@@ -9,30 +10,33 @@ A redirect URL for this example app will look something like: http://localhost:3
 TokenAuthenticator will detect the presence of a token in the query parameters, and attempt to authenticate it.
 On successful authentication, a session will be created and the user will be shown Profile.js 
 */
-export const TokenAuthenticator = ({ children }: { children: ReactNode }) => {
+export const TokenAuthenticator = () => {
 	const stytch = useStytch()
 	const { user } = useStytchUser()
+	const [searchParams] = useSearchParams()
+	const navigate = useNavigate()
 
 	useEffect(() => {
-		// If the stytch SDK is available, and there is no existing user check for a token value in query params
-		if (stytch && !user) {
-			const queryParams = new URLSearchParams(window.location.search)
-			const token = queryParams.get('token')
-			const tokenType = queryParams.get('stytch_token_type')
+		if (!user) {
+			const token = searchParams.get('token')
+			const tokenType = searchParams.get('stytch_token_type')
 
 			// If a token is found, authenticate it with the appropriate method
 			if (token && tokenType) {
-				if (tokenType === 'magic_links') {
+				if (tokenType === 'magic_links')
 					stytch.magicLinks.authenticate(token, {
-						session_duration_minutes: 6000,
+						session_duration_minutes: 60 * 24 * 7, // One week, the same as in the dashboard https://stytch.com/dashboard/sdk-configuration?env=test
 					})
-				} else if (tokenType === 'oauth') {
-					stytch.oauth.authenticate(token, {
-						session_duration_minutes: 6000,
-					})
-				}
+				else console.log(`This Stytch's token '${tokenType}' isn't implemented`)
 			}
 		}
-	}, [stytch, user])
-	return children
+	}, [stytch, searchParams, user])
+
+	useEffect(() => {
+		if (user) {
+			navigate('/home')
+		}
+	}, [navigate, user])
+
+	return null
 }

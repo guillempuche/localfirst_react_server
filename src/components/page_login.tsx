@@ -7,7 +7,7 @@ Login configures and renders the StytchLogin component which is a prebuilt UI co
 This component accepts style, config, and callbacks props. To learn more about possible options review the documentation at
 https://stytch.com/docs/sdks/javascript-sdk#ui-configs
 */
-const Login = () => {
+export const PageLogin = () => {
 	const styles = {
 		container: {
 			width: '100%',
@@ -20,21 +20,14 @@ const Login = () => {
 		},
 	}
 	const config = {
-		products: [Products.emailMagicLinks, Products.passwords],
+		products: [Products.emailMagicLinks],
 		emailMagicLinksOptions: {
-			loginRedirectURL: 'http://localhost:3000',
-			loginExpirationMinutes: 6000,
-			signupRedirectURL: 'http://localhost:3000',
-			signupExpirationMinutes: 6000,
-		},
-		passwordOptions: {
-			loginRedirectURL: 'http://localhost:3000',
-			loginExpirationMinutes: 6000,
-			resetPasswordRedirectURL: 'http://localhost:3000',
+			loginRedirectURL: 'http://localhost:3000/authenticate',
+			loginExpirationMinutes: 60 * 24 * 7, // One week
+			signupRedirectURL: 'http://localhost:3000/authenticate',
+			signupExpirationMinutes: 60 * 24 * 7,
 		},
 	}
 
 	return <StytchLogin config={config} styles={styles} />
 }
-
-export default Login
