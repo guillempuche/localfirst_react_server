@@ -60,7 +60,7 @@ function Layout() {
 		return powerSync.registerListener({
 			statusChanged: status => {
 				setConnected(status.connected)
-				setLastSyncedAt(status.lastSyncedAt)
+				setLastSyncedAt(status.lastSyncedAt ?? null)
 			},
 		})
 	}, [powerSync])
