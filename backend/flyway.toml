@@ -8,6 +8,6 @@ locations = ["filesystem:./migrations"]
 baselineOnMigrate = true
 
 [environments.default]
-url = "jdbc:postgresql://ep-royal-meadow-a2moli7w.eu-central-1.aws.neon.tech/xstate_actor"
-user = "online_services.multimillionaire"
-password = "IN4L2csxgEtU"
+url = "jdbc:postgresql://<your_id_instance>.aws.neon.tech/xstate_actor"
+user = "user_name"
+password = "password"
