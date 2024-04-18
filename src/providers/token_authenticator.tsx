@@ -3,12 +3,12 @@ import { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 /*
-During both the Magic link and OAuth flow, Stytch will redirect the user back to your application to a specified redirect URL (see Login.js). 
+During the Magic link, Stytch will redirect the user back to your application to a specified redirect URL (see the Login component). 
 Stytch will append query parameters to the redirect URL which are then used to complete the authentication flow. 
 A redirect URL for this example app will look something like: http://localhost:3000/?stytch_token_type=magic_links&token=abc123
 
 TokenAuthenticator will detect the presence of a token in the query parameters, and attempt to authenticate it.
-On successful authentication, a session will be created and the user will be shown Profile.js 
+On successful authentication, a session will be created and the user will be redirected to the home page. 
 */
 export const TokenAuthenticator = () => {
 	const stytch = useStytch()
