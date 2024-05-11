@@ -12,7 +12,8 @@
 				"noShadowRestrictedNames": "warn"
 			},
 			"complexity": {
-				"noForEach": "warn"
+				"noForEach": "warn",
+				"noStaticOnlyClass": "off"
 			}
 		}
 	},

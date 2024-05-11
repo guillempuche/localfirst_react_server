@@ -142,4 +142,15 @@ Debugging in Chrome with VSCode:
 
 ## Resources
 
+- EffectJS
+  - Guides
+		- Introduction https://github.com/antoine-coulon/effect-introduction
+		- Schema <https://github.com/Effect-TS/effect/blob/main/packages/schema/README.md>
+		- Server
+		<https://github.com/Effect-TS/effect/blob/main/packages/rpc-http/examples/router.ts>
+		- Server with open telemetry https://github.com/IMax153/advanced-effect-workshop/blob/main/workshop/solutions/session-04/exercise-02.ts
+	- Complete projects
+		- https://github.com/effect-app/sample/
+		- <https://github.com/ccntrq/git-jira-branch/blob/master/src/types.ts>
+		- <https://github.com/TylorS/typed/blob/development/examples/todomvc>
 - [Kysely](https://kysely.dev/docs/), a query builder for fetching SQL data, alongside PowerSync. API documentation and examples are available at [Kysely API Docs](https://kysely-org.github.io/kysely-apidoc) and [Kysely GitHub](https://github.com/kysely-org/kysely/blob/master/example), respectively.

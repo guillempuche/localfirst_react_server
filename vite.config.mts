@@ -38,11 +38,17 @@ export default defineConfig(({ mode }) => ({
 		plugins: () => [wasm(), topLevelAwait()],
 	},
 	optimizeDeps: {
-		// Don't optimize the packages `@journeyapps/wa-sqlite`, `@journeyapps/powersync-sdk-web`,
+		// Don't optimize the packages `@journeyapps/wa-sqlite`, `@powersync/web`,
 		// `object-hash`, `uuid`, `event-iterator`, `js-logger`, `lodash`, `can-ndjson-stream` as
 		// they contain web workers and WASM files.
 		// https://github.com/vitejs/vite/issues/11672#issuecomment-1415820673
-		exclude: ['@journeyapps/wa-sqlite', '@journeyapps/powersync-sdk-web'],
+		exclude: [
+			'@journeyapps/wa-sqlite',
+			'@powersync/web',
+			'@sqlite.org/sqlite-wasm',
+		],
+
+		// For PowerSync
 		include: [
 			'object-hash',
 			'uuid',
