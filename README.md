@@ -153,4 +153,5 @@ Debugging in Chrome with VSCode:
 		- https://github.com/effect-app/sample/
 		- <https://github.com/ccntrq/git-jira-branch/blob/master/src/types.ts>
 		- <https://github.com/TylorS/typed/blob/development/examples/todomvc>
+		- Incl. auth, migrations https://github.com/datner/effect-remix
 - [Kysely](https://kysely.dev/docs/), a query builder for fetching SQL data, alongside PowerSync. API documentation and examples are available at [Kysely API Docs](https://kysely-org.github.io/kysely-apidoc) and [Kysely GitHub](https://github.com/kysely-org/kysely/blob/master/example), respectively.
