@@ -276,7 +276,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@biomejs/biome@npm:^1.6.1":
+"@biomejs/biome@npm:^1.7.3":
   version: 1.7.3
   resolution: "@biomejs/biome@npm:1.7.3"
   dependencies:
@@ -3512,7 +3512,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "powersync_auth_stytch@workspace:."
   dependencies:
-    "@biomejs/biome": "npm:^1.6.1"
+    "@biomejs/biome": "npm:^1.7.3"
     "@effect/schema": "npm:^0.67.13"
     "@effect/sql": "npm:^0.3.0"
     "@effect/sql-pg": "npm:^0.3.1"
