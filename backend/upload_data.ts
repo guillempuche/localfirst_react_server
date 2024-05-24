@@ -1,7 +1,4 @@
-import {
-	type CrudEntryOutputJSON,
-	UpdateType,
-} from '@journeyapps/powersync-sdk-web'
+import { type CrudEntryOutputJSON, UpdateType } from '@powersync/web'
 import type { Request, Response } from 'express'
 import { dbKysely } from './db'
 import type { TableName } from './schema'

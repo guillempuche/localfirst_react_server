@@ -1,11 +1,11 @@
+import { wrapPowerSyncWithKysely } from '@powersync/kysely-driver'
 import {
 	Column,
 	ColumnType,
 	Schema,
 	Table,
 	WASQLitePowerSyncDatabaseOpenFactory,
-} from '@journeyapps/powersync-sdk-web'
-import { wrapPowerSyncWithKysely } from '@powersync/kysely-driver'
+} from '@powersync/web'
 
 import type { Database } from '@backend/schema'
 

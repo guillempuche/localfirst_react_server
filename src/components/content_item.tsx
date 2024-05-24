@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import type { Authors, Quotes } from '@backend/schema'
-import { usePowerSyncWatchedQuery } from '@journeyapps/powersync-react'
+import { usePowerSyncWatchedQuery } from '@powersync/react'
 import { db } from '../db'
 
 type ContentItemProps = {

@@ -1,4 +1,4 @@
-import { usePowerSyncWatchedQuery } from '@journeyapps/powersync-react'
+import { useQuery } from '@powersync/react'
 import { useEffect, useState } from 'react'
 
 import type { Authors, Quotes } from '@backend/schema'
@@ -7,12 +7,8 @@ import { produce } from 'immer'
 // import { db } from '../db'
 
 export const PageHome = () => {
-	const watchQuotes = usePowerSyncWatchedQuery<Quotes>(
-		'SELECT * FROM quotes ORDER BY id DESC',
-	)
-	const watchAuthors = usePowerSyncWatchedQuery<Authors>(
-		'SELECT * FROM authors',
-	)
+	const watchQuotes = useQuery<Quotes>('SELECT * FROM quotes ORDER BY id DESC')
+	const watchAuthors = useQuery<Authors>('SELECT * FROM authors')
 	const [quotes, setQuotes] = useState<Quotes[]>([])
 	const [authors, setAuthors] = useState<Authors[]>([])
 

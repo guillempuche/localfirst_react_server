@@ -1,5 +1,5 @@
-import { PowerSyncContext } from '@journeyapps/powersync-react'
-import type { AbstractPowerSyncDatabase } from '@journeyapps/powersync-sdk-web'
+import { PowerSyncContext } from '@powersync/react'
+import type { AbstractPowerSyncDatabase } from '@powersync/web'
 import { type ReactNode, useEffect, useState } from 'react'
 
 import { useStytch } from '@stytch/react'

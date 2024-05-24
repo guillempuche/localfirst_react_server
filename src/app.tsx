@@ -11,7 +11,7 @@ import {
 import { Tooltip } from 'react-tooltip'
 
 import { Button, PageHome, PageLogin, PageProfile } from '@components'
-import { usePowerSync } from '@journeyapps/powersync-react'
+import { usePowerSync } from '@powersync/react'
 import { TokenAuthenticator } from '@providers'
 
 export const App = () => {
