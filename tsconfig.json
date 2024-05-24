@@ -35,7 +35,7 @@
 		"strict": true,
 		"skipLibCheck": true,
 		"allowSyntheticDefaultImports": true,
-		"exactOptionalPropertyTypes": false,
+		"exactOptionalPropertyTypes": false, // Prevent error when using "undefined" in mock data
 		"forceConsistentCasingInFileNames": true,
 		"noFallthroughCasesInSwitch": true
 	},
