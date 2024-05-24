@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react'
 
 import type { Authors, Quotes } from '@backend/schema'
 import { ContentItem } from '@components'
-import { produce } from 'immer'
-// import { db } from '../db'
 
 export const PageHome = () => {
 	const watchQuotes = useQuery<Quotes>('SELECT * FROM quotes ORDER BY id DESC')
