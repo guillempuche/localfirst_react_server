@@ -16,14 +16,14 @@ export default defineConfig(({ mode }) => ({
 	server: {
 		open: false,
 		port: 3000,
-		// Enable Cross-Origin Isolation for advanced features like SharedArrayBuffer in workers used by SQLite.
-		// - COOP: Restrict document sharing across origins to enhance security.
-		// - COEP: Require all resources to include CORP headers, ensuring data isolation.
-		// https://github.com/sqlite/sqlite-wasm?tab=readme-ov-file#usage-with-vite
-		headers: {
-			'Cross-Origin-Opener-Policy': 'same-origin',
-			'Cross-Origin-Embedder-Policy': 'require-corp',
-		},
+		// // Enable Cross-Origin Isolation for advanced features like SharedArrayBuffer in workers used by SQLite.
+		// // - COOP: Restrict document sharing across origins to enhance security.
+		// // - COEP: Require all resources to include CORP headers, ensuring data isolation.
+		// // https://github.com/sqlite/sqlite-wasm?tab=readme-ov-file#usage-with-vite
+		// headers: {
+		// 	'Cross-Origin-Opener-Policy': 'same-origin',
+		// 	'Cross-Origin-Embedder-Policy': 'require-corp',
+		// },
 	},
 	build: {
 		outDir: 'dist',
