@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"target": "ES2022",
 		"useDefineForClassFields": true,
-		"lib": ["dom", "dom.iterable", "ES2022"],
+		"lib": ["ES2022"],
 		"module": "ES2022",
 		"moduleResolution": "bundler",
 		"resolveJsonModule": true,
@@ -15,7 +15,7 @@
 		"paths": {
 			"@backend/*": ["backend/*"],
 			"@components": ["src/components/index"],
-			"@mock": ["./src/mock/index"],
+			"@mock": ["src/mock/index"],
 			"@providers": ["src/providers/index"]
 		},
 		"strict": true,
