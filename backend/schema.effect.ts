@@ -1,22 +1,6 @@
 import * as S from '@effect/schema/Schema'
 import { Generated } from 'effect-sql-kysely'
 
-// Quotes
-export const SchemaQuoteNoGenerated = S.Struct({
-	id: S.UUID,
-	text: S.String,
-	author_id: S.optional(S.UUID),
-	collections_id: S.optional(S.UUID),
-	created_at: S.Date,
-})
-export const SchemaQuote = S.Struct({
-	id: Generated(S.UUID),
-	text: S.String,
-	author_id: S.optional(S.UUID),
-	collections_id: S.optional(S.UUID),
-	created_at: S.Date,
-})
-
 // Authors
 export const SchemaAuthorNoGenerated = S.Struct({
 	id: S.UUID,
@@ -59,4 +43,20 @@ export const SchemaEditor = S.Struct({
 	collections_id: S.optional(S.Array(S.UUID)),
 	quote_ref: S.optional(S.String),
 	author_ref: S.optional(S.String),
+})
+
+// Quotes
+export const SchemaQuoteNoGenerated = S.Struct({
+	id: S.UUID,
+	text: S.String,
+	author_id: S.optional(S.UUID),
+	collections_id: S.optional(S.UUID),
+	created_at: S.Date,
+})
+export const SchemaQuote = S.Struct({
+	id: Generated(S.UUID),
+	text: S.String,
+	author_id: S.optional(S.UUID),
+	collections_id: S.optional(S.UUID),
+	created_at: S.Date,
 })

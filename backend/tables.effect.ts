@@ -31,20 +31,6 @@ export type EffectDatabase = {
 export type TableName = 'quotes' | 'authors' | 'collections' | 'editors'
 
 // ========================
-// Quotes
-
-// Without Generated type
-export const TableQuotesNoGenerated = Table(SchemaQuoteNoGenerated.fields)
-type TableQuotesNoGenerated = typeof TableQuotesNoGenerated.Encoded
-// Or without Generated type and table
-export type TableQuotesNoGeneratedNoTable =
-	typeof SchemaQuoteNoGenerated.Encoded
-
-// With Generated type
-export const TableQuotes = Table(SchemaQuote.fields)
-type TableQuotes = typeof TableQuotes.Encoded
-
-// ========================
 // Authors
 
 // Without Generated type
@@ -87,3 +73,17 @@ export type TableEditorsNoGeneratedNoTable =
 // With Generated type
 export const TableEditors = Table(SchemaEditor.fields)
 type TableEditors = typeof TableEditors.Encoded
+
+// ========================
+// Quotes
+
+// Without Generated type
+export const TableQuotesNoGenerated = Table(SchemaQuoteNoGenerated.fields)
+type TableQuotesNoGenerated = typeof TableQuotesNoGenerated.Encoded
+// Or without Generated type and table
+export type TableQuotesNoGeneratedNoTable =
+	typeof SchemaQuoteNoGenerated.Encoded
+
+// With Generated type
+export const TableQuotes = Table(SchemaQuote.fields)
+type TableQuotes = typeof TableQuotes.Encoded
