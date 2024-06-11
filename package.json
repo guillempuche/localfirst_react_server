@@ -5,12 +5,14 @@
 	"type": "module",
 	"main": "src/index.tsx",
 	"scripts": {
-		"database:migrate": "vite-node ./backend/migrate.effect.ts",
+		"database:migrate": "vite-node ./backend/migrate.ts",
+		"database:migrate-effect": "vite-node ./backend/migrate.effect.ts",
 		"lint": "biome check --write --no-errors-on-unmatched",
 		"web": "vite",
 		"web:build": "tsc && vite build",
 		"web:preview": "vite preview",
-		"server": "nodemon --exec vite-node ./backend/server.ts"
+		"server": "nodemon --exec vite-node ./backend/server.ts",
+		"server-effect": "nodemon --exec vite-node ./backend/server.effect.ts"
 	},
 	"dependencies": {
 		"@effect/schema": "^0.67.22",
