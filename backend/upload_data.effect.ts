@@ -1,7 +1,7 @@
 import { type CrudEntryOutputJSON, UpdateType } from '@powersync/web'
 import type { Request, Response } from 'express'
 
-import { dbKyselyEffect } from './db.effect'
+import { dbKyselyEffect, dbKyselyEffectNoGenerated } from './db.effect'
 import type { TableName } from './tables.effect'
 
 export async function uploadDataHandlerEffect(req: Request, res: Response) {
@@ -21,19 +21,25 @@ export async function uploadDataHandlerEffect(req: Request, res: Response) {
 							...data,
 							id,
 						})
-						// .onConflict('id')
-						// .merge(operation.opData)
 						.execute()
 					break
 				case UpdateType.PATCH:
-					await dbKyselyEffect
+					// Without Generated type
+					await dbKyselyEffectNoGenerated
 						.updateTable(type as TableName)
 						.set(data as Record<string, any>)
 						.where('id', '=', id)
 						.execute()
+
+					// // With Generated type
+					// await dbKyselyEffect
+					// 	.updateTable(type as TableName)
+					// 	.set(data as Record<string, any>)
+					// 	.where('id', '=', id)
+					// 	.execute()
 					break
 				case UpdateType.DELETE:
-					await dbKyselyEffect
+					await dbKyselyEffectNoGenerated
 						.deleteFrom(type as TableName)
 						.where('id', '=', id)
 						.execute()

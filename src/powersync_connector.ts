@@ -2,7 +2,7 @@ import type {
 	AbstractPowerSyncDatabase,
 	PowerSyncBackendConnector,
 	PowerSyncCredentials,
-} from '@journeyapps/powersync-sdk-web'
+} from '@powersync/web'
 import type { IHeadlessSessionClient } from '@stytch/vanilla-js'
 
 export class Connector implements PowerSyncBackendConnector {

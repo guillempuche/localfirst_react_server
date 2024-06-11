@@ -7,7 +7,7 @@ import {
 	WASQLitePowerSyncDatabaseOpenFactory,
 } from '@powersync/web'
 
-import type { Database } from '@backend/schema'
+import type { EffectDatabaseNoGenerated } from '@backend/tables.effect'
 
 // =============================================
 // SQLite schema & tables
@@ -65,7 +65,7 @@ export const powerSyncFactory = new WASQLitePowerSyncDatabaseOpenFactory({
 })
 
 // For CRUD SQL queries.
-export const db = wrapPowerSyncWithKysely<Database>(
+export const dbEffect = wrapPowerSyncWithKysely<EffectDatabaseNoGenerated>(
 	powerSyncFactory.getInstance(),
 )
 
