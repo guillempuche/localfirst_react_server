@@ -1,10 +1,10 @@
 import { type CrudEntryOutputJSON, UpdateType } from '@powersync/web'
 import type { Request, Response } from 'express'
 
-import { dbKysely } from './db'
-import type { TableName } from './schema'
+import { dbKyselyEffect } from './db.effect'
+import type { TableName } from './tables.effect'
 
-export async function uploadDataHandler(req: Request, res: Response) {
+export async function uploadDataHandlerEffect(req: Request, res: Response) {
 	const transactions: CrudEntryOutputJSON[] = req.body.transactions
 
 	if (!transactions || transactions.length === 0) {
@@ -15,7 +15,7 @@ export async function uploadDataHandler(req: Request, res: Response) {
 		for (const { op, type, id, data } of transactions) {
 			switch (op) {
 				case UpdateType.PUT:
-					await dbKysely
+					await dbKyselyEffect
 						.insertInto(type as TableName)
 						.values({
 							...data,
@@ -26,14 +26,14 @@ export async function uploadDataHandler(req: Request, res: Response) {
 						.execute()
 					break
 				case UpdateType.PATCH:
-					await dbKysely
+					await dbKyselyEffect
 						.updateTable(type as TableName)
 						.set(data as Record<string, any>)
 						.where('id', '=', id)
 						.execute()
 					break
 				case UpdateType.DELETE:
-					await dbKysely
+					await dbKyselyEffect
 						.deleteFrom(type as TableName)
 						.where('id', '=', id)
 						.execute()

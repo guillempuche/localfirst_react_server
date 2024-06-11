@@ -19,12 +19,10 @@ export const dbConnection = new Pool({
 	ssl: true,
 })
 
-// https://kysely-org.github.io/kysely-apidoc/classes/PostgresDialect.html
-const dialect = new PostgresDialect({
-	pool: dbConnection,
-})
-
 // https://kysely-org.github.io/kysely-apidoc/classes/Kysely.html
 export const dbKysely = new Kysely<Database>({
-	dialect,
+	// https://kysely-org.github.io/kysely-apidoc/classes/PostgresDialect.html
+	dialect: new PostgresDialect({
+		pool: dbConnection,
+	}),
 })

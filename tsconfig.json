@@ -2,11 +2,7 @@
 	"compilerOptions": {
 		"target": "ES2022",
 		"useDefineForClassFields": true,
-		"lib": [
-			"dom",
-			"dom.iterable",
-			"ES2022"
-		],
+		"lib": ["dom", "dom.iterable", "ES2022"],
 		"module": "ES2022",
 		/* Bundler mode */
 		"moduleResolution": "bundler",
@@ -18,18 +14,10 @@
 		"preserveSymlinks": true,
 		"baseUrl": ".",
 		"paths": {
-			"@backend/*": [
-				"backend/*"
-			],
-			"@components": [
-				"src/components/index"
-			],
-			"@mock": [
-				"./src/mock/index"
-			],
-			"@providers": [
-				"src/providers/index"
-			]
+			"@backend/*": ["backend/*"],
+			"@components": ["src/components/index"],
+			"@mock": ["./src/mock/index"],
+			"@providers": ["src/providers/index"]
 		},
 		/* Linting */
 		"strict": true,
@@ -39,13 +27,8 @@
 		"forceConsistentCasingInFileNames": true,
 		"noFallthroughCasesInSwitch": true
 	},
-	"include": [
-		"backend",
-		"src"
-	],
-	"exclude": [
-		"node_modules"
-	],
+	"include": ["backend", "src"],
+	"exclude": ["node_modules"],
 	"references": [
 		{
 			"path": "./tsconfig.node.json"

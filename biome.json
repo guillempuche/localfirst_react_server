@@ -34,12 +34,6 @@
 		}
 	},
 	"files": {
-		"ignore": [
-			".yarn/*",
-			".pnp.*",
-			"node_modules",
-			"old_*.ts",
-			".vscode"
-		]
+		"ignore": [".yarn/*", ".pnp.*", "node_modules", ".vscode"]
 	}
 }

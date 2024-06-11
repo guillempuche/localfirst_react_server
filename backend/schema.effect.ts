@@ -1,7 +1,7 @@
 import * as S from '@effect/schema/Schema'
 
 // Quotes
-export const QuotesSchema = S.Struct({
+export const SchemaQuote = S.Struct({
 	id: S.UUID,
 	text: S.String,
 	author_id: S.optional(S.UUID),
@@ -10,21 +10,21 @@ export const QuotesSchema = S.Struct({
 })
 
 // Authors
-export const AuthorsSchema = S.Struct({
+export const SchemaAuthor = S.Struct({
 	id: S.UUID,
 	fullname: S.String,
 	birth_date: S.optional(S.Date),
 })
 
 // Collections
-export const CollectionsSchema = S.Struct({
+export const SchemaCollection = S.Struct({
 	id: S.UUID,
 	name: S.String,
 	parent_id: S.optional(S.UUID),
 })
 
 // Editors
-export const EditorsSchema = S.Struct({
+export const SchemaEditor = S.Struct({
 	id: S.UUID,
 	text: S.optional(S.String),
 	fullname: S.optional(S.String),
