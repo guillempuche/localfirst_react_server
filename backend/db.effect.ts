@@ -1,7 +1,7 @@
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import * as Pg from '@effect/sql-pg'
-import dotenv from 'dotenv'
+import { config } from 'dotenv'
 import { Config } from 'effect'
 import { Kysely, PostgresDialect } from 'kysely'
 import { Pool } from 'pg'
@@ -9,7 +9,7 @@ import { Pool } from 'pg'
 import type { EffectDatabase, EffectDatabaseNoGenerated } from './tables.effect'
 
 // Load environment variables
-dotenv.config({
+config({
 	path: join(dirname(fileURLToPath(import.meta.url)), '../.env'),
 })
 

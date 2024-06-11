@@ -1,0 +1,10 @@
+{
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"module": "ES2022",
+		"moduleResolution": "bundler",
+		"allowSyntheticDefaultImports": true,
+		"jsx": "react-jsx"
+	},
+	"include": ["src"]
+}
