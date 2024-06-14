@@ -1,4 +1,5 @@
-import { type CrudEntryOutputJSON, UpdateType } from '@powersync/common'
+// import { type CrudEntryOutputJSON, UpdateType } from '@powersync/common'
+import * as Powersync from '@powersync/common'
 import type { Request, Response } from 'express'
 
 import {
@@ -8,7 +9,7 @@ import {
 import type { TableName } from '@localfirst/core/tables.effect.js'
 
 export async function uploadDataHandlerEffect(req: Request, res: Response) {
-	const transactions: CrudEntryOutputJSON[] = req.body.transactions
+	const transactions: Powersync.CrudEntryOutputJSON[] = req.body.transactions
 
 	if (!transactions || transactions.length === 0) {
 		return res.status(400).send({ message: 'No transactions provided' })
@@ -17,7 +18,7 @@ export async function uploadDataHandlerEffect(req: Request, res: Response) {
 	try {
 		for (const { op, type, id, data } of transactions) {
 			switch (op) {
-				case UpdateType.PUT:
+				case Powersync.UpdateType.PUT:
 					await dbKyselyEffect
 						.insertInto(type as TableName)
 						.values({
@@ -26,7 +27,7 @@ export async function uploadDataHandlerEffect(req: Request, res: Response) {
 						})
 						.execute()
 					break
-				case UpdateType.PATCH:
+				case Powersync.UpdateType.PATCH:
 					// Without Generated type
 					await dbKyselyEffectNoGenerated
 						.updateTable(type as TableName)
@@ -41,7 +42,7 @@ export async function uploadDataHandlerEffect(req: Request, res: Response) {
 					// 	.where('id', '=', id)
 					// 	.execute()
 					break
-				case UpdateType.DELETE:
+				case Powersync.UpdateType.DELETE:
 					await dbKyselyEffectNoGenerated
 						.deleteFrom(type as TableName)
 						.where('id', '=', id)
