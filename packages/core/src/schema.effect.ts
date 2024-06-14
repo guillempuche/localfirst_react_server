@@ -32,7 +32,7 @@ export const SchemaEditorNoGenerated = S.Struct({
 	fullname: S.optional(S.String),
 	birth_date: S.optional(S.Date),
 	author_id: S.optional(S.UUID),
-	collections_id: S.optional(S.Array(S.UUID)),
+	collections_id: S.Array(S.UUID),
 })
 export const SchemaEditor = S.Struct({
 	id: Generated(S.UUID),
@@ -40,7 +40,7 @@ export const SchemaEditor = S.Struct({
 	fullname: S.optional(S.String),
 	birth_date: S.optional(S.Date),
 	author_id: S.optional(S.UUID),
-	collections_id: S.optional(S.Array(S.UUID)),
+	collections_id: S.Array(S.UUID),
 	quote_ref: S.optional(S.String),
 	author_ref: S.optional(S.String),
 })
