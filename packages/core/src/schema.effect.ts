@@ -1,5 +1,6 @@
 import * as S from '@effect/schema/Schema'
 import { Generated } from 'effect-sql-kysely'
+import { CommaSeparatedList } from './utils'
 
 // Authors
 export const SchemaAuthorNoGenerated = S.Struct({
@@ -32,7 +33,7 @@ export const SchemaEditorNoGenerated = S.Struct({
 	fullname: S.optional(S.String),
 	birth_date: S.optional(S.Date),
 	author_id: S.optional(S.UUID),
-	collections_id: S.Array(S.UUID),
+	collections_id: CommaSeparatedList(S.UUID),
 })
 export const SchemaEditor = S.Struct({
 	id: Generated(S.UUID),
@@ -40,7 +41,7 @@ export const SchemaEditor = S.Struct({
 	fullname: S.optional(S.String),
 	birth_date: S.optional(S.Date),
 	author_id: S.optional(S.UUID),
-	collections_id: S.Array(S.UUID),
+	collections_id: CommaSeparatedList(S.UUID),
 	quote_ref: S.optional(S.String),
 	author_ref: S.optional(S.String),
 })
