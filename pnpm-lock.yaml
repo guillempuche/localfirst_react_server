@@ -189,8 +189,8 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1
       effect-sql-kysely:
-        specifier: ^0.0.2
-        version: 0.0.2(@effect/schema@0.67.22(effect@3.3.1))(@effect/sql@0.3.10(@effect/platform@0.57.0(@effect/schema@0.67.22(effect@3.3.1))(effect@3.3.1))(@effect/schema@0.67.22(effect@3.3.1))(effect@3.3.1))(effect@3.3.1)(kysely@0.27.3)
+        specifier: ^0.0.3
+        version: 0.0.3(@effect/schema@0.67.22(effect@3.3.1))(@effect/sql@0.3.10(@effect/platform@0.57.0(@effect/schema@0.67.22(effect@3.3.1))(effect@3.3.1))(@effect/schema@0.67.22(effect@3.3.1))(effect@3.3.1))(effect@3.3.1)(kysely@0.27.3)
       kysely:
         specifier: ^0.27.3
         version: 0.27.3
@@ -1417,8 +1417,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  effect-sql-kysely@0.0.2:
-    resolution: {integrity: sha512-RxvkGHsO5+RXgoiak5zY5M+R4tPCteTvR4sc/tkClUg9C88dViaBsJXobxEciSrOE+z9ossY1XXwA6LABj4Xdw==}
+  effect-sql-kysely@0.0.3:
+    resolution: {integrity: sha512-bVoSiGlgm7lE2Nild/GKMsMW+MVC/A1gt62EZw8xf0mVZ7BzDYCyEpe2lJPxmXT4iO7rUqqMC08izyLTZqsGug==}
     peerDependencies:
       '@effect/schema': ^0.67.21
       '@effect/sql': ^0.3.9
@@ -3726,7 +3726,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  effect-sql-kysely@0.0.2(@effect/schema@0.67.22(effect@3.3.1))(@effect/sql@0.3.10(@effect/platform@0.57.0(@effect/schema@0.67.22(effect@3.3.1))(effect@3.3.1))(@effect/schema@0.67.22(effect@3.3.1))(effect@3.3.1))(effect@3.3.1)(kysely@0.27.3):
+  effect-sql-kysely@0.0.3(@effect/schema@0.67.22(effect@3.3.1))(@effect/sql@0.3.10(@effect/platform@0.57.0(@effect/schema@0.67.22(effect@3.3.1))(effect@3.3.1))(@effect/schema@0.67.22(effect@3.3.1))(effect@3.3.1))(effect@3.3.1)(kysely@0.27.3):
     dependencies:
       '@effect/schema': 0.67.22(effect@3.3.1)
       '@effect/sql': 0.3.10(@effect/platform@0.57.0(@effect/schema@0.67.22(effect@3.3.1))(effect@3.3.1))(@effect/schema@0.67.22(effect@3.3.1))(effect@3.3.1)
