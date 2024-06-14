@@ -12,8 +12,7 @@ This guide walks you through setting up a React application designed with a loca
 
 ### Install Dependencies
 
-- Execute `yarn install` to install the necessary dependencies.
-- Ensure dependencies are installed in the `node_modules` of this project to support local SQLite database functionality.
+- Execute `pnpm i` to install the necessary dependencies.
 
 ### Prepare Environment Variables
 
@@ -89,16 +88,16 @@ Setting up your Postgres database correctly is crucial for the successful operat
 
 To apply your SQL migration files to your Postgres database, you can use one of two methods provided in this project: a custom script or the Flyway command-line tool. These methods facilitate the migration process, setting up your database structure for the application.
 
-#### Using a Script
+#### [WIP] Using a Script
 
 1. Run the custom script
    - This project includes a script to automate the migration process. To execute this script, simply run the following command in your terminal:
 
      ```sh
-     yarn database:migrate
+     pnpm -F migration migrate-effect
      ```
 
-   - This command will locate the SQL migration files in your `backend/migrations` directory and apply them to your Postgres database, adhering to the order specified by the file names.
+   - This command will locate the SQL migration files in your `migration` app and apply them to your Postgres database, adhering to the order specified by the file names.
 
 #### Using Flyway
 
@@ -123,10 +122,10 @@ Flyway is an industry-standard tool for managing database migrations with more e
 
 Deploy your database synchronization rules to PowerSync by copying the `database/sync_rules.yaml` file to your PowerSync project as outlined in [PowerSync Sync Rules Documentation](https://docs.powersync.com/usage/sync-rules).
 
-### Running the Server and Web Application
+### [WIP] Running the Server and Web Application
 
-- Start the Express server handling SQL modifications via PowerSync with `yarn server`.
-- Launch the React application with `yarn web`.
+- Start the Express server handling SQL modifications via PowerSync with `pnpm -F server run start-effect`.
+- Launch the React application with `pnpm -F web run start`.
 - Open `http://localhost:3000` in two browser tabs to test real-time data synchronization across instances.
 - Open browsers' console to see the logs. You should enable all types of logs because the React web uses `console.debug`.
 
@@ -144,14 +143,14 @@ Debugging in Chrome with VSCode:
 
 - EffectJS
   - Guides
-		- Introduction https://github.com/antoine-coulon/effect-introduction
-		- Schema <https://github.com/Effect-TS/effect/blob/main/packages/schema/README.md>
-		- Server
-		<https://github.com/Effect-TS/effect/blob/main/packages/rpc-http/examples/router.ts>
-		- Server with open telemetry https://github.com/IMax153/advanced-effect-workshop/blob/main/workshop/solutions/session-04/exercise-02.ts
-	- Complete projects
-		- https://github.com/effect-app/sample/
-		- <https://github.com/ccntrq/git-jira-branch/blob/master/src/types.ts>
-		- <https://github.com/TylorS/typed/blob/development/examples/todomvc>
-		- Incl. auth, migrations https://github.com/datner/effect-remix
+  - Introduction <https://github.com/antoine-coulon/effect-introduction>
+  - Schema <https://github.com/Effect-TS/effect/blob/main/packages/schema/README.md>
+  - Server
+  <https://github.com/Effect-TS/effect/blob/main/packages/rpc-http/examples/router.ts>
+  - Server with open telemetry <https://github.com/IMax153/advanced-effect-workshop/blob/main/workshop/solutions/session-04/exercise-02.ts>
+    - Complete projects
+      - <https://github.com/effect-app/sample/>
+      - <https://github.com/ccntrq/git-jira-branch/blob/master/src/types.ts>
+      - <https://github.com/TylorS/typed/blob/development/examples/todomvc>
+      - Incl. auth, migrations <https://github.com/datner/effect-remix>
 - [Kysely](https://kysely.dev/docs/), a query builder for fetching SQL data, alongside PowerSync. API documentation and examples are available at [Kysely API Docs](https://kysely-org.github.io/kysely-apidoc) and [Kysely GitHub](https://github.com/kysely-org/kysely/blob/master/example), respectively.
