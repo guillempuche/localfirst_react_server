@@ -1,11 +1,11 @@
-import { type CrudEntryOutputJSON, UpdateType } from '@powersync/web'
+import * as Powersync from '@powersync/common'
 import type { Request, Response } from 'express'
 
-import { dbKysely } from '@localfirst/core/db'
-import type { TableName } from '@localfirst/core/schema'
+import { dbKysely } from '@localfirst/core/db.js'
+import type { TableName } from '@localfirst/core/schema.js'
 
 export async function uploadDataHandler(req: Request, res: Response) {
-	const transactions: CrudEntryOutputJSON[] = req.body.transactions
+	const transactions: Powersync.CrudEntryOutputJSON[] = req.body.transactions
 
 	if (!transactions || transactions.length === 0) {
 		return res.status(400).send({ message: 'No transactions provided' })
@@ -14,7 +14,7 @@ export async function uploadDataHandler(req: Request, res: Response) {
 	try {
 		for (const { op, type, id, data } of transactions) {
 			switch (op) {
-				case UpdateType.PUT:
+				case Powersync.UpdateType.PUT:
 					await dbKysely
 						.insertInto(type as TableName)
 						.values({
@@ -25,14 +25,14 @@ export async function uploadDataHandler(req: Request, res: Response) {
 						// .merge(operation.opData)
 						.execute()
 					break
-				case UpdateType.PATCH:
+				case Powersync.UpdateType.PATCH:
 					await dbKysely
 						.updateTable(type as TableName)
 						.set(data as Record<string, any>)
 						.where('id', '=', id)
 						.execute()
 					break
-				case UpdateType.DELETE:
+				case Powersync.UpdateType.DELETE:
 					await dbKysely
 						.deleteFrom(type as TableName)
 						.where('id', '=', id)
