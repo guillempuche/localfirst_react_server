@@ -1,6 +1,6 @@
 import { usePowerSync } from '@powersync/react'
 import { useStytch, useStytchUser } from '@stytch/react'
-import { type ReactNode, useEffect, useState } from 'react'
+import { type ReactNode, Suspense, lazy, useEffect, useState } from 'react'
 import {
 	Navigate,
 	Outlet,
@@ -11,8 +11,12 @@ import {
 } from 'react-router-dom'
 import { Tooltip } from 'react-tooltip'
 
-import { Button, PageHome, PageLogin, PageProfile } from '~components'
+import { Button, PageHome, PageLogin } from '~components'
 import { TokenAuthenticator } from '~providers'
+
+const PageProfile = lazy(() =>
+	import('~components').then(module => ({ default: module.PageProfile })),
+)
 
 export const App = () => {
 	return (
@@ -34,7 +38,9 @@ export const App = () => {
 						path='/profile'
 						element={
 							<RequireAuth>
-								<PageProfile />
+								<Suspense fallback={<div>Loading...</div>}>
+									<PageProfile />
+								</Suspense>
 							</RequireAuth>
 						}
 					/>

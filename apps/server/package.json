@@ -2,9 +2,9 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Server application",
-  "main": "dist/server/server.effect.js",
-  "types": "dist/index.d.ts",
   "type": "module",
+  "main": "dist/index.effect.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc --build",
     "start": "tsx watch src/server.ts",

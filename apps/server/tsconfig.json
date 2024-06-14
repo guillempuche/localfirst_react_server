@@ -5,9 +5,7 @@
 		"moduleResolution": "NodeNext",
 		"target": "ESNext",
 		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true,
+		"esModuleInterop": true
 	},
-	"include": [
-		"src"
-	]
+	"include": ["src"]
 }

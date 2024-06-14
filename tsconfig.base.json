@@ -18,13 +18,8 @@
 		"target": "ESNext",
 		"baseUrl": ".",
 		"paths": {
-			"@localfirst/core/*": [
-				"packages/core/src/*"
-			]
+			"@localfirst/core/*": ["packages/core/src/*"]
 		}
 	},
-	"exclude": [
-		"dist",
-		"node_modules"
-	]
+	"exclude": ["dist", "node_modules"]
 }
