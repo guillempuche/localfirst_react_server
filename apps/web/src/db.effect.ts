@@ -38,34 +38,3 @@ export const powerSyncFactoryEffect = new WASQLitePowerSyncDatabaseOpenFactory({
 export const dbEffect = wrapPowerSyncWithKysely<EffectDatabaseNoGenerated>(
 	powerSyncFactoryEffect.getInstance(),
 )
-
-export interface Quote {
-	id: string
-	text: string
-	author_id: string
-	collections_id: string
-	created_at: string
-}
-
-export interface Author {
-	id: string
-	fullname: string
-	birth_date: string
-}
-
-export interface Collection {
-	id: string
-	name: string
-	parent_id: string
-}
-
-export interface Editor {
-	id: string
-	text: string
-	fullname: string
-	birth_date: string // Consider using Date or string
-	author_id: string
-	collections_id: string
-	quote_ref: string
-	author_ref: string
-}
