@@ -1,0 +1,28 @@
+{
+  "name": "@localfirst/core",
+  "version": "1.0.0",
+  "description": "Core utilities and types for the monorepo",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@effect/schema": "^0.67.22",
+    "@effect/sql-pg": "^0.3.11",
+    "@powersync/common": "^1.11.1",
+    "dotenv": "^16.4.5",
+    "effect": "^3.3.1",
+    "effect-sql-kysely": "^0.0.2",
+    "kysely": "^0.27.3",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.2",
+    "typescript": "^5.4.5"
+  }
+}

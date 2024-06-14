@@ -1,5 +1,0 @@
-export * from './button'
-export * from './content_item'
-export * from './page_login'
-export * from './page_home'
-export * from './page_profile'

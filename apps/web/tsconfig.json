@@ -1,0 +1,36 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"target": "ESNext",
+		"lib": [
+			"ESNext",
+			"DOM",
+			"DOM.Iterable"
+		],
+		"module": "ESNext",
+		/* Bundler mode */
+		"moduleResolution": "bundler",
+		"jsx": "react-jsx",
+		"baseUrl": ".",
+		"paths": {
+			"@localfirst/core/*": [
+				"../../packages/core/src/*"
+			],
+			"~components": [
+				"./src/components/index"
+			],
+			"~mock": [
+				"./src/mock/index"
+			],
+			"~providers": [
+				"./src/providers/index"
+			]
+		},
+		"types": [
+			"vite/client"
+		]
+	},
+	"include": [
+		"src"
+	]
+}
