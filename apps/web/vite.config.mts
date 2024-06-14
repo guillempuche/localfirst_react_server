@@ -1,15 +1,17 @@
-import { resolve } from 'node:path'
+import path, { resolve } from 'node:path'
 import react from '@vitejs/plugin-react'
+import dotenv from 'dotenv'
 import { defineConfig } from 'vite'
 import topLevelAwait from 'vite-plugin-top-level-await'
 import wasm from 'vite-plugin-wasm'
 
-export default defineConfig(({ mode }) => ({
+dotenv.config({ path: path.resolve(__dirname, '../../.env') })
+
+export default defineConfig(_ => ({
 	resolve: {
-		// Resolve modules in the build time
+		// Resolve modules for build time
 		alias: {
-			// '@backend/*': resolve(__dirname, 'backend/*'),
-			// '@backend': resolve(__dirname, 'backend'),
+			'@localfirst/core': resolve(__dirname, '../../packages/core/src'),
 			'~components': resolve(__dirname, 'src/components/index'),
 			'~mock': resolve(__dirname, 'src/mock/index'),
 			'~providers': resolve(__dirname, 'src/providers/index'),

@@ -84,6 +84,7 @@ export const ContentItem: React.FC<ContentItemProps> = ({
 
 	return (
 		<div
+			data-component='content-item'
 			className={`rounded-2xl p-5 space-y-2 bg-green-50 dark:bg-stone-900 hover:bg-green-100 dark:hover:bg-green-900 ${className}`}
 		>
 			<input

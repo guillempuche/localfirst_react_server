@@ -34,6 +34,6 @@
 		}
 	},
 	"files": {
-		"ignore": [".vscode", "pnpm-lock.yaml", "node_modules"]
+		"ignore": [".vscode", "dist", "pnpm-lock.yaml", "node_modules"]
 	}
 }

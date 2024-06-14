@@ -15,7 +15,10 @@ export const PageProfile = () => {
 	const { session } = useStytchSession()
 
 	return (
-		<div className='flex flex-col grow h-screen max-w-lg mx-auto px-6 pt-3 space-y-4 bg-white dark:bg-black dark:text-white'>
+		<div
+			data-component='page-profile'
+			className='flex flex-col grow h-screen max-w-lg mx-auto px-6 pt-3 space-y-4 bg-white dark:bg-black dark:text-white'
+		>
 			<div className='card bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6'>
 				<h1 className='text-xl font-bold text-gray-900 dark:text-white'>
 					Profile

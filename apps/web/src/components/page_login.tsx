@@ -29,5 +29,7 @@ export const PageLogin = () => {
 		},
 	}
 
-	return <StytchLogin config={config} styles={styles} />
+	return (
+		<StytchLogin data-component='page-login' config={config} styles={styles} />
+	)
 }

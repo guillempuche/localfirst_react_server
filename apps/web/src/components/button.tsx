@@ -27,7 +27,7 @@ export const Button: React.FC<ButtonPropsDefault> = ({
 			type='button'
 			disabled={disabled ?? isLoading}
 			data-tooltip-id='tooltip'
-			data-tooltip-content={tooltip}
+			data-tooltip-content={tooltip ?? ''}
 			data-tooltip-place='bottom'
 			data-tooltip-variant='info'
 			{...props}

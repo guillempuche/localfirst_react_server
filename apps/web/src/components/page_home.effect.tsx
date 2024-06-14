@@ -42,22 +42,24 @@ export const PageHomeEffect = () => {
 
 	if (!quotes.length)
 		return (
-			<>
-				<div className='flex-1 overflow-x-hidden rounded-xl space-y-4 pb-20'>
-					<div className='flex items-center justify-center h-96'>
-						<h2 className='text-2xl font-semibold text-gray-500 dark:text-gray-400'>
-							No quotes found
-						</h2>
-					</div>
+			<div
+				data-component='page-home-effect'
+				className='flex-1 overflow-x-hidden rounded-xl space-y-4 pb-20'
+			>
+				<div className='flex items-center justify-center h-96'>
+					<h2 className='text-2xl font-semibold text-gray-500 dark:text-gray-400'>
+						No quotes found
+					</h2>
 				</div>
-			</>
+			</div>
 		)
 
 	return (
-		<>
-			<div className='flex-1 overflow-x-hidden rounded-xl space-y-4 pb-20'>
-				{renderQuotes()}
-			</div>
-		</>
+		<div
+			data-component='page-home-effect'
+			className='flex-1 overflow-x-hidden rounded-xl space-y-4 pb-20'
+		>
+			{renderQuotes()}
+		</div>
 	)
 }

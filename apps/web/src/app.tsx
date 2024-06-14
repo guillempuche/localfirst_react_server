@@ -11,11 +11,17 @@ import {
 } from 'react-router-dom'
 import { Tooltip } from 'react-tooltip'
 
-import { Button, PageHome, PageLogin } from '~components'
+import { Button, PageLogin } from '~components'
 import { TokenAuthenticator } from '~providers'
 
 const PageProfile = lazy(() =>
 	import('~components').then(module => ({ default: module.PageProfile })),
+)
+const PageHome = lazy(() =>
+	import('~components').then(module => ({ default: module.PageHome })),
+)
+const PageHomeEffect = lazy(() =>
+	import('~components').then(module => ({ default: module.PageHomeEffect })),
 )
 
 export const App = () => {
@@ -30,7 +36,10 @@ export const App = () => {
 						path='/home'
 						element={
 							<RequireAuth>
-								<PageHome />
+								<Suspense fallback={<div>Loading...</div>}>
+									{/* <PageHome /> */}
+									<PageHomeEffect />
+								</Suspense>
 							</RequireAuth>
 						}
 					/>
