@@ -33,7 +33,8 @@ export const SchemaEditorNoGenerated = S.Struct({
 	fullname: S.optional(S.String),
 	birth_date: S.optional(S.Date),
 	author_id: S.optional(S.UUID),
-	collections_id: CommaSeparatedList(S.UUID),
+	// collections_id: CommaSeparatedList(S.UUID),
+	collections_id: S.Data(S.Array(S.UUID)),
 })
 export const SchemaEditor = S.Struct({
 	id: Generated(S.UUID),
@@ -41,7 +42,8 @@ export const SchemaEditor = S.Struct({
 	fullname: S.optional(S.String),
 	birth_date: S.optional(S.Date),
 	author_id: S.optional(S.UUID),
-	collections_id: CommaSeparatedList(S.UUID),
+	// collections_id: CommaSeparatedList(S.UUID),
+	collections_id: S.Data(S.Array(S.UUID)),
 	quote_ref: S.optional(S.String),
 	author_ref: S.optional(S.String),
 })
@@ -51,13 +53,15 @@ export const SchemaQuoteNoGenerated = S.Struct({
 	id: S.UUID,
 	text: S.String,
 	author_id: S.optional(S.UUID),
-	collections_id: S.optional(S.UUID),
+	// collections_id: CommaSeparatedList(S.UUID),
+	collections_id: S.Data(S.Array(S.UUID)),
 	created_at: S.Date,
 })
 export const SchemaQuote = S.Struct({
 	id: Generated(S.UUID),
 	text: S.String,
 	author_id: S.optional(S.UUID),
-	collections_id: S.optional(S.UUID),
+	// collections_id: CommaSeparatedList(S.UUID),
+	collections_id: S.Data(S.Array(S.UUID)),
 	created_at: S.Date,
 })
