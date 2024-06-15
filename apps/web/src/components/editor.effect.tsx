@@ -44,6 +44,7 @@ export const EditorEffect: React.FC<EditorProps> = ({
 				id: uuid(),
 				text: quoteText,
 				author_id: finalAuthorId,
+				collections_id: [],
 				created_at: new Date().toDateString(),
 			})
 			.onConflict(oc =>
