@@ -2,6 +2,11 @@ import { AST, Schema as S } from '@effect/schema'
 import { Column, ColumnType, Schema, Table } from '@powersync/common'
 import { isColumnTypes } from 'effect-sql-kysely'
 
+/**
+ * Converts a Kysely schema to a PowerSync schema because PowerSync sync rules use the SQLite type system.
+ *
+ * More on https://docs.powersync.com/usage/sync-rules/types.
+ */
 export function toPowerSyncSchema<Tables extends Record<string, S.Schema.Any>>(
 	tables: Tables,
 ): Schema {
@@ -29,16 +34,17 @@ export function toPowerSyncColumn(property: AST.PropertySignature): Column {
 }
 
 export function toPowerSyncColumnType(ast: AST.AST): ColumnType {
+	console.log('Processing AST node:', ast)
+
 	switch (ast._tag) {
 		case 'StringKeyword':
 			return ColumnType.TEXT
 		case 'NumberKeyword':
-			// How to check for integers?
-			return ColumnType.REAL
+			return ColumnType.INTEGER
 		case 'Literal': {
 			const type = typeof ast.literal
 			if (type === 'number') {
-				return ColumnType.REAL
+				return ColumnType.INTEGER
 			}
 			if (type === 'string') {
 				return ColumnType.TEXT
@@ -64,11 +70,28 @@ export function toPowerSyncColumnType(ast: AST.AST): ColumnType {
 
 			throw new Error(`Unsupported union of column types: ${types.join(', ')}`)
 		}
+		case 'TupleType': {
+			if (ast.elements.length === 0) {
+				// throw new Error('Empty tuple types are not supported')
+			}
+			// Map each element's type and determine the column type accordingly
+			const elementTypes = ast.elements.map(e => toPowerSyncColumnType(e.type))
+			const uniqueTypes = Array.from(new Set(elementTypes))
+
+			if (uniqueTypes.length === 1) {
+				return uniqueTypes[0]
+			}
+
+			// throw new Error(
+			// 	`Unsupported tuple of mixed column types: ${uniqueTypes.join(', ')}`,
+			// )
+			return ColumnType.TEXT
+		}
 		default:
 			return unknownColumnTypeError(ast)
 	}
 }
 
 export function unknownColumnTypeError(ast: AST.AST): never {
-	throw new Error(`Unknown column type for AST node: ${ast._tag}`)
+	console.warn(`Unknown column type for AST node: ${ast._tag}`)
 }
