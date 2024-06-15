@@ -5,21 +5,18 @@ import type {
 	AuthorNoGeneratedQuery,
 	QuoteNoGeneratedQuery,
 } from '@localfirst/core/tables.effect'
-import { ContentItemEffect } from '~components'
+import { Button, ContentItemEffect, EditorEffect } from '~components'
 
 export const PageHomeEffect = () => {
-	// const watchQuotes = useQuery<Quotes>('SELECT * FROM quotes ORDER BY id DESC')
 	const watchQuotes = useQuery<QuoteNoGeneratedQuery>(
 		'SELECT * FROM quotes ORDER BY id DESC',
 	)
-	// const watchAuthors = useQuery<Authors>('SELECT * FROM authors')
 	const watchAuthorsEffect = useQuery<AuthorNoGeneratedQuery>(
 		'SELECT * FROM authors',
 	)
-	// const [quotes, setQuotes] = useState<Quotes[]>([])
-	// const [authors, setAuthors] = useState<Authors[]>([])
 	const [quotes, setQuotes] = useState<QuoteNoGeneratedQuery[]>([])
 	const [authors, setAuthors] = useState<AuthorNoGeneratedQuery[]>([])
+	const [isEditorVisible, setIsEditorVisible] = useState(false)
 
 	useEffect(() => {
 		if (watchQuotes?.data) {
@@ -32,6 +29,21 @@ export const PageHomeEffect = () => {
 			setAuthors(watchAuthorsEffect.data)
 		}
 	}, [watchAuthorsEffect])
+
+	const handleSave = () => {
+		// Refresh quotes and authors after save
+		if (watchQuotes?.data) {
+			setQuotes(watchQuotes.data)
+		}
+		if (watchAuthorsEffect?.data) {
+			setAuthors(watchAuthorsEffect.data)
+		}
+		setIsEditorVisible(false)
+	}
+
+	const handleCancel = () => {
+		setIsEditorVisible(false)
+	}
 
 	const renderQuotes = () => {
 		return quotes.map(quote => {
@@ -59,6 +71,21 @@ export const PageHomeEffect = () => {
 			data-component='page-home-effect'
 			className='flex-1 overflow-x-hidden rounded-xl space-y-4 pb-20'
 		>
+			{!isEditorVisible && (
+				<Button
+					onClick={() => setIsEditorVisible(true)}
+					className='bg-blue-600 hover:bg-blue-500'
+				>
+					Add Quote
+				</Button>
+			)}
+			{isEditorVisible && (
+				<EditorEffect
+					authors={authors}
+					onSave={handleSave}
+					onCancel={handleCancel}
+				/>
+			)}
 			{renderQuotes()}
 		</div>
 	)

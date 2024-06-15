@@ -1,6 +1,6 @@
 import { Table } from 'effect-sql-kysely'
 
-import type { Selectable } from 'kysely'
+import type { Insertable, Selectable, Updateable } from 'kysely'
 import {
 	SchemaAuthor,
 	SchemaAuthorNoGenerated,
@@ -43,6 +43,8 @@ export type TableAuthorsNoGeneratedNoTable =
 
 // Kysely actions
 export type AuthorNoGeneratedQuery = Selectable<TableAuthorsNoGeneratedNoTable>
+export type AuthorNoGeneratedInsert = Insertable<TableAuthorsNoGeneratedNoTable>
+export type AuthorNoGeneratedUpdate = Updateable<TableAuthorsNoGeneratedNoTable>
 
 // With Generated type
 export const TableAuthors = Table(SchemaAuthor.fields)
@@ -90,6 +92,8 @@ export type TableQuotesNoGeneratedNoTable =
 
 // Kysely actions
 export type QuoteNoGeneratedQuery = Selectable<TableQuotesNoGeneratedNoTable>
+export type QuoteNoGeneratedInsert = Insertable<TableQuotesNoGeneratedNoTable>
+export type QuoteNoGeneratedUpdate = Updateable<TableQuotesNoGeneratedNoTable>
 
 // With Generated type
 export const TableQuotes = Table(SchemaQuote.fields)

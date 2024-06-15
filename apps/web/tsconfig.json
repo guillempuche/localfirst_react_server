@@ -7,6 +7,7 @@
 		/* Bundler mode */
 		"moduleResolution": "bundler",
 		"jsx": "react-jsx",
+		"exactOptionalPropertyTypes": false,
 		"baseUrl": ".",
 		"paths": {
 			"@localfirst/core/*": ["../../packages/core/src/*"],

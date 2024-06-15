@@ -4,6 +4,7 @@ import type React from 'react'
 type ButtonProps = {
 	isLoading?: boolean
 	tooltip?: string
+	icon?: React.ReactNode
 }
 
 interface ButtonPropsDefault
@@ -19,6 +20,7 @@ export const Button: React.FC<ButtonPropsDefault> = ({
 	isLoading,
 	disabled,
 	tooltip,
+	icon,
 	className,
 	...props
 }) => {
@@ -37,6 +39,7 @@ export const Button: React.FC<ButtonPropsDefault> = ({
 				className,
 			)}
 		>
+			{icon && <span className='mr-2'>{icon}</span>}
 			{children}
 			{isLoading ? (
 				<svg
