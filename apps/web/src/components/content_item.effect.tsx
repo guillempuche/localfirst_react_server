@@ -5,8 +5,8 @@ import type {
 	AuthorNoGeneratedQuery,
 	QuoteNoGeneratedQuery,
 } from '@localfirst/core/tables.effect'
-import { Button } from '~components'
-import { dbEffect } from '../db.effect'
+import { dbEffect } from '~effect'
+import { Button } from './button'
 
 type ContentItemProps = {
 	quote: QuoteNoGeneratedQuery

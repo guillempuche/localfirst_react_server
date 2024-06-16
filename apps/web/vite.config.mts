@@ -13,7 +13,9 @@ export default defineConfig(_ => ({
 		alias: {
 			'@localfirst/core': resolve(__dirname, '../../packages/core/src'),
 			'~components': resolve(__dirname, 'src/components/index'),
+			'~effect': resolve(__dirname, 'src/db.effect'),
 			'~mock': resolve(__dirname, 'src/mock/index'),
+			'~pages': resolve(__dirname, 'src/pages/index'),
 			'~providers': resolve(__dirname, 'src/providers/index'),
 		},
 	},

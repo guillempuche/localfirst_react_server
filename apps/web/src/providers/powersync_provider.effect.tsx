@@ -3,7 +3,7 @@ import type { AbstractPowerSyncDatabase } from '@powersync/web'
 import { useStytch } from '@stytch/react'
 import { type ReactNode, useEffect, useState } from 'react'
 
-import { powerSyncFactoryEffect } from '../db.effect'
+import { powerSyncFactoryEffect } from '~effect'
 import { Connector } from '../powersync_connector'
 
 export const PowerSyncProviderEffect = ({

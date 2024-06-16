@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { v4 as uuid } from 'uuid'
 
 import type { AuthorNoGeneratedQuery } from '@localfirst/core/tables.effect'
-import { dbEffect } from '../db.effect'
+import { dbEffect } from '~effect'
 import { Button } from './button'
 
 type EditorProps = {
@@ -19,6 +19,18 @@ export const EditorEffect: React.FC<EditorProps> = ({
 	const [quoteText, setQuoteText] = useState('')
 	const [authorId, setAuthorId] = useState<string | undefined>(undefined)
 	const [authorName, setAuthorName] = useState('')
+
+	const handleAuthorChange = (authorId: string) => {
+		setAuthorId(authorId)
+		if (authorId) {
+			const selectedAuthor = authors.find(a => a.id === authorId)
+			if (selectedAuthor) {
+				setAuthorName(selectedAuthor.fullname)
+			}
+		} else {
+			setAuthorName('')
+		}
+	}
 
 	const handleSave = async () => {
 		let finalAuthorId = authorId
@@ -47,11 +59,6 @@ export const EditorEffect: React.FC<EditorProps> = ({
 				collections_id: [],
 				created_at: new Date().toDateString(),
 			})
-			.onConflict(oc =>
-				oc.column('text').doUpdateSet({
-					author_id: finalAuthorId,
-				}),
-			)
 			.executeTakeFirst()
 
 		// Trigger onSave callback
@@ -79,7 +86,7 @@ export const EditorEffect: React.FC<EditorProps> = ({
 				</label>
 				<select
 					className='w-full p-2 rounded border-2 placeholder-gray-500 dark:placeholder-gray-400 border-gray-300 bg-white text-gray-900 dark:border-gray-600 dark:bg-stone-800 dark:text-gray-100'
-					onChange={e => setAuthorId(e.target.value || undefined)}
+					onChange={e => handleAuthorChange(e.target.value)}
 					value={authorId || ''}
 				>
 					<option value=''>New</option>

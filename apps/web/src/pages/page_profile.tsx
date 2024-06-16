@@ -1,6 +1,6 @@
 import { useStytch, useStytchSession, useStytchUser } from '@stytch/react'
 
-import { Button } from '.'
+import { Button } from '~components'
 
 /*
 The Profile component is shown to a user that is logged in.

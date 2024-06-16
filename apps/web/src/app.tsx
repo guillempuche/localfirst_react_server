@@ -11,17 +11,18 @@ import {
 } from 'react-router-dom'
 import { Tooltip } from 'react-tooltip'
 
-import { Button, PageLogin } from '~components'
+import { Button } from '~components'
+import { PageLogin } from '~pages'
 import { TokenAuthenticator } from '~providers'
 
 const PageProfile = lazy(() =>
-	import('~components').then(module => ({ default: module.PageProfile })),
+	import('~pages').then(module => ({ default: module.PageProfile })),
 )
 const PageHome = lazy(() =>
-	import('~components').then(module => ({ default: module.PageHome })),
+	import('~pages').then(module => ({ default: module.PageHome })),
 )
 const PageHomeEffect = lazy(() =>
-	import('~components').then(module => ({ default: module.PageHomeEffect })),
+	import('~pages').then(module => ({ default: module.PageHomeEffect })),
 )
 
 export const App = () => {
