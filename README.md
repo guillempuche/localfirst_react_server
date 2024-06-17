@@ -6,7 +6,7 @@ This guide walks you through setting up a React application designed with a loca
 
 ## Prerequisites
 
-- Install Yarn on your computer from [yarnpkg.com](https://yarnpkg.com/).
+- Install pnpm on your computer from [pnpm.io](https://pnpm.io/installation).
 
 ## Steps
 
