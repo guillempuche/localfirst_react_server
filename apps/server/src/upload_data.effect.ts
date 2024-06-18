@@ -1,5 +1,4 @@
-// import { type CrudEntryOutputJSON, UpdateType } from '@powersync/common'
-import type * as Powersync from '@powersync/common'
+import type { CrudEntryOutputJSON } from '@powersync/common'
 import type { Request, Response } from 'express'
 
 import {
@@ -9,7 +8,7 @@ import {
 import type { TableName } from '@localfirst/core/tables.effect.js'
 
 export async function uploadDataHandlerEffect(req: Request, res: Response) {
-	const transactions: Powersync.CrudEntryOutputJSON[] = req.body.transactions
+	const transactions: CrudEntryOutputJSON[] = req.body.transactions
 
 	console.debug('Received transactions:', JSON.stringify(transactions, null, 2))
 
@@ -24,7 +23,7 @@ export async function uploadDataHandlerEffect(req: Request, res: Response) {
 				`Processing transaction: op=${op}, type=${type}, id=${id}, data=${JSON.stringify(data, null, 2)}`,
 			)
 			switch (op) {
-				// case Powersync.UpdateType.PUT:
+				// case UpdateType.PUT:
 				case 'PUT':
 					console.debug(`Executing PUT operation for type=${type}, id=${id}`)
 					await dbKyselyEffect
@@ -36,7 +35,7 @@ export async function uploadDataHandlerEffect(req: Request, res: Response) {
 						.execute()
 					console.debug(`PUT operation successful for id=${id}`)
 					break
-				// case Powersync.UpdateType.PATCH:
+				// case UpdateType.PATCH:
 				case 'PATCH':
 					console.debug(`Executing PATCH operation for type=${type}, id=${id}`)
 					// Without Generated type
@@ -54,7 +53,7 @@ export async function uploadDataHandlerEffect(req: Request, res: Response) {
 					// 	.execute()
 					console.debug(`PATCH operation successful for id=${id}`)
 					break
-				// case Powersync.UpdateType.DELETE:
+				// case UpdateType.DELETE:
 				case 'DELETE':
 					console.debug(`Executing DELETE operation for type=${type}, id=${id}`)
 					await dbKyselyEffectNoGenerated
