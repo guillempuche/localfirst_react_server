@@ -34,8 +34,6 @@ export function toPowerSyncColumn(property: AST.PropertySignature): Column {
 }
 
 export function toPowerSyncColumnType(ast: AST.AST): ColumnType {
-	console.log('Processing AST node:', ast)
-
 	switch (ast._tag) {
 		case 'StringKeyword':
 			return ColumnType.TEXT
