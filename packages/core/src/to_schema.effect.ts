@@ -71,21 +71,22 @@ export function toPowerSyncColumnType(ast: AST.AST): ColumnType {
 			throw new Error(`Unsupported union of column types: ${types.join(', ')}`)
 		}
 		case 'TupleType': {
-			if (ast.elements.length === 0) {
-				// throw new Error('Empty tuple types are not supported')
+			const allTypes = [
+				...ast.elements.map(e => toPowerSyncColumnType(e.type)),
+				...ast.rest.map(a => toPowerSyncColumnType(a)),
+			]
+			if (allTypes.length === 0) {
+				throw new Error('Empty tuple types are not supported')
 			}
-			// Map each element's type and determine the column type accordingly
-			const elementTypes = ast.elements.map(e => toPowerSyncColumnType(e.type))
-			const uniqueTypes = Array.from(new Set(elementTypes))
+			const uniqueTypes = Array.from(new Set(allTypes))
 
 			if (uniqueTypes.length === 1) {
 				return uniqueTypes[0]
 			}
 
-			// throw new Error(
-			// 	`Unsupported tuple of mixed column types: ${uniqueTypes.join(', ')}`,
-			// )
-			return ColumnType.TEXT
+			throw new Error(
+				`Unsupported tuple of mixed column types: ${uniqueTypes.join(', ')}`,
+			)
 		}
 		default:
 			return unknownColumnTypeError(ast)
