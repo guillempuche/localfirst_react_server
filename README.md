@@ -122,7 +122,7 @@ Flyway is an industry-standard tool for managing database migrations with more e
 
 Deploy your database synchronization rules to PowerSync by copying the `database/sync_rules.yaml` file to your PowerSync project as outlined in [PowerSync Sync Rules Documentation](https://docs.powersync.com/usage/sync-rules).
 
-### [WIP] Running the Server and Web Application
+### Running the Server and Web Application
 
 - Start the Express server handling SQL modifications via PowerSync with `pnpm -F server run start-effect`.
 - Launch the React application with `pnpm -F web run start`.
