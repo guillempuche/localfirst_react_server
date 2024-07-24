@@ -3,17 +3,18 @@
   "version": "1.0.0",
   "description": "Migration scripts for the database",
   "scripts": {
-    "migrate": "vite-node ./migrate.ts",
-    "migrate-effect": "vite-node ./migrate.effect.ts"
+    "migrate": "tsx ./migrate.ts",
+    "migrate-effect": "tsx ./migrate.effect.ts"
   },
   "dependencies": {
     "@localfirst/core": "workspace:*",
     "dotenv": "^16.4.5",
-    "kysely": "^0.27.3"
+    "kysely": "^0.27.4"
   },
   "devDependencies": {
     "@types/node": "^20.11.20",
     "ts-node": "^10.9.2",
+    "tsx": "^4.15.4",
     "typescript": "^5.4.5",
     "vite-node": "^1.3.1"
   }
