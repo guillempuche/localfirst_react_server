@@ -88,17 +88,6 @@ Setting up your Postgres database correctly is crucial for the successful operat
 
 To apply your SQL migration files to your Postgres database, you can use one of two methods provided in this project: a custom script or the Flyway command-line tool. These methods facilitate the migration process, setting up your database structure for the application.
 
-#### [WIP] Using a Script
-
-1. Run the custom script
-   - This project includes a script to automate the migration process. To execute this script, simply run the following command in your terminal:
-
-     ```sh
-     pnpm -F migration migrate-effect
-     ```
-
-   - This command will locate the SQL migration files in your `migration` app and apply them to your Postgres database, adhering to the order specified by the file names.
-
 #### Using Flyway
 
 Flyway is an industry-standard tool for managing database migrations with more extensive functionality. If you prefer using Flyway for applying your SQL files:
@@ -117,6 +106,18 @@ Flyway is an industry-standard tool for managing database migrations with more e
      ```
 
    - Replace `"/path/to/your/backend/flyway.toml"` with the actual path to your Flyway configuration file. This command instructs Flyway to apply the SQL migration files found in the locations specified within your configuration file.
+
+#### [To-do] Using a Kysely Script
+
+1. Create Kysely compliant migration files in `./apps/migration/migrations` following this guide <https://kysely.dev/docs/migrations>
+2. Run the custom script
+   - This project includes a script to automate the migration process. To execute this script, simply run the following command in your terminal:
+
+     ```sh
+     pnpm -F migration migrate-effect
+     ```
+
+   - This command will locate the SQL migration files in your `migration` app and apply them to your Postgres database, adhering to the order specified by the file names.
 
 ### Deploy PowerSync Synchronization Rules
 

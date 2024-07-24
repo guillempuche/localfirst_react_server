@@ -1,3 +1,8 @@
+/**
+ * Ensure that all migration files in the ./migrations directory are Kysely compliant.
+ * For more information, refer to: https://kysely.dev/docs/migrations
+ */
+
 import { promises as fs } from 'node:fs'
 import * as path from 'node:path'
 import { FileMigrationProvider, Migrator } from 'kysely'
