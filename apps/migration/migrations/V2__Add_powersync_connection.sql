@@ -6,6 +6,7 @@ GRANT SELECT,
 	collections,
 	quotes,
 	editors TO powersync_role;
+	
 -- Create publication (part of logical replication) for PowerSync
 CREATE PUBLICATION powersync FOR TABLE authors,
 collections,

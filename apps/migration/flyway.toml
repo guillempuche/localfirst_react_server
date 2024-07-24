@@ -2,7 +2,7 @@
 
 [flyway]
 environment = "default"
-locations = ["filesystem:./migrations"]
+locations = ["filesystem:/<full_path_to_repo>/apps/migration/migrations"]
 
 # Automatically call baseline when migrate is executed against a non-empty schema with no schema history table.
 baselineOnMigrate = true
