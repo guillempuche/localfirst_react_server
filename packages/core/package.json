@@ -7,13 +7,9 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "build": "tsc --build",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "dependencies": {
     "@effect/schema": "^0.67.22",
-    "@effect/sql-pg": "^0.3.11",
     "@powersync/common": "^1.11.1",
     "dotenv": "^16.4.5",
     "effect": "^3.3.1",

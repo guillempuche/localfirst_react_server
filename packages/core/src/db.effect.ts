@@ -1,6 +1,4 @@
-import * as Pg from '@effect/sql-pg'
 import dotenv from 'dotenv'
-import { Config } from 'effect'
 import { Kysely, PostgresDialect } from 'kysely'
 import { Pool } from 'pg'
 
@@ -33,12 +31,4 @@ export const dbKyselyEffect = new Kysely<EffectDatabase>({
 	dialect: new PostgresDialect({
 		pool: dbConnectionEffect,
 	}),
-})
-
-export const SqlLive = Pg.client.layer({
-	database: Config.succeed(process.env.VITE_DB_DATABASE),
-	host: Config.succeed(process.env.VITE_DB_HOST),
-	username: Config.succeed(process.env.VITE_DB_USERNAME),
-	password: Config.redacted(process.env.VITE_DB_PASSWORD),
-	ssl: Config.succeed(true),
 })
