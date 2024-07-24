@@ -14,10 +14,10 @@
     "start-effect": "pnpm -r run start-effect"
   },
   "dependencies": {
-    "@biomejs/biome": "^1.8.1",
+    "@biomejs/biome": "^1.8.3",
     "@manypkg/cli": "^0.21.4",
     "@types/node": "^20.11.20",
-    "syncpack": "^11.2.1",
+    "syncpack": "^12.4.0",
     "typescript": "^5.4.5"
   },
   "packageManager": "pnpm@9.3.0+sha256.e1f9e8d1a16607a46dd3c158b5f7a7dc7945501d1c6222d454d63d033d1d918f",
