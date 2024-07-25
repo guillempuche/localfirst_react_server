@@ -2,11 +2,7 @@
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
 		"target": "ESNext",
-		"lib": [
-			"ESNext",
-			"DOM",
-			"DOM.Iterable"
-		],
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		"module": "ESNext",
 		/* Bundler mode */
 		"moduleResolution": "bundler",
@@ -14,31 +10,14 @@
 		"exactOptionalPropertyTypes": false,
 		"baseUrl": ".",
 		"paths": {
-			"@localfirst/core/*": [
-				"../../packages/core/src/*"
-			],
-			"~components": [
-				"./src/components/index"
-			],
-			"~effect": [
-				"./src/db.effect"
-			],
-			"~mock": [
-				"./src/mock/index"
-			],
-			"~pages": [
-				"./src/pages/index"
-			],
-			"~providers": [
-				"./src/providers/index"
-			]
+			"@localfirst/core/*": ["../../packages/core/src/*"],
+			"~components": ["./src/components/index"],
+			"~effect": ["./src/db.effect"],
+			"~mock": ["./src/mock/index"],
+			"~pages": ["./src/pages/index"],
+			"~providers": ["./src/providers/index"]
 		},
-		"types": [
-			"vite/client"
-		]
+		"types": ["vite/client"]
 	},
-	"include": [
-		"src",
-		"vite.config.mts"
-	]
+	"include": ["src", "vite.config.mts"]
 }

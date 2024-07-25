@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { v4 as uuid } from 'uuid'
+import { v7 as uuid } from 'uuid'
 
 import type { AuthorNoGeneratedQuery } from '@localfirst/core/tables.effect'
 import { dbEffect } from '~effect'
