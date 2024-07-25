@@ -3,7 +3,7 @@ import type { Request, Response } from 'express'
 
 import {
 	dbKyselyEffect,
-	dbKyselyEffectNoGenerated,
+	// dbKyselyEffectGeneratedId,
 } from '@localfirst/core/db.effect.js'
 import type { TableName } from '@localfirst/core/tables.effect.js'
 
@@ -39,14 +39,14 @@ export async function uploadDataHandlerEffect(req: Request, res: Response) {
 				case 'PATCH':
 					console.debug(`Executing PATCH operation for type=${type}, id=${id}`)
 					// Without Generated type
-					await dbKyselyEffectNoGenerated
+					await dbKyselyEffect
 						.updateTable(type as TableName)
 						.set(data as Record<string, any>)
 						.where('id', '=', id)
 						.execute()
 
 					// // With Generated type
-					// await dbKyselyEffect
+					// await dbKyselyEffectGeneratedId
 					// 	.updateTable(type as TableName)
 					// 	.set(data as Record<string, any>)
 					// 	.where('id', '=', id)
@@ -56,7 +56,7 @@ export async function uploadDataHandlerEffect(req: Request, res: Response) {
 				// case UpdateType.DELETE:
 				case 'DELETE':
 					console.debug(`Executing DELETE operation for type=${type}, id=${id}`)
-					await dbKyselyEffectNoGenerated
+					await dbKyselyEffect
 						.deleteFrom(type as TableName)
 						.where('id', '=', id)
 						.execute()
