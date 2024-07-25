@@ -1,16 +1,13 @@
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
 
-import type {
-	AuthorNoGeneratedQuery,
-	QuoteNoGeneratedQuery,
-} from '@localfirst/core/tables.effect'
+import type { AuthorQuery, QuoteQuery } from '@localfirst/core/tables.effect'
 import { dbEffect } from '~effect'
 import { Button } from './button'
 
 type ContentItemProps = {
-	quote: QuoteNoGeneratedQuery
-	author: AuthorNoGeneratedQuery | undefined
+	quote: QuoteQuery
+	author: AuthorQuery | undefined
 	className?: string
 }
 

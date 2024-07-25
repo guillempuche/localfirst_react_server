@@ -3,7 +3,7 @@ import type { AbstractPowerSyncDatabase } from '@powersync/web'
 import { useStytch } from '@stytch/react'
 import { type ReactNode, useEffect, useState } from 'react'
 
-import { powerSyncFactoryEffect } from '~effect'
+import { powerSyncInstanceEffect } from '~effect'
 import { Connector } from '../powersync_connector'
 
 export const PowerSyncProviderEffect = ({
@@ -19,7 +19,7 @@ export const PowerSyncProviderEffect = ({
 			try {
 				console.debug('⏳ Initializing the PowerSync instance using Effect...')
 
-				const powerSyncInstance = powerSyncFactoryEffect.getInstance()
+				const powerSyncInstance = powerSyncInstanceEffect
 				await powerSyncInstance.init()
 
 				console.debug('⏳ PowerSync is verifying the session...')

@@ -3,30 +3,30 @@ import { Table } from 'effect-sql-kysely'
 import type { Insertable, Selectable, Updateable } from 'kysely'
 import {
 	SchemaAuthor,
-	SchemaAuthorNoGenerated,
+	SchemaAuthorGeneratedId,
 	SchemaCollection,
-	SchemaCollectionNoGenerated,
+	SchemaCollectionGeneratedId,
 	SchemaEditor,
-	SchemaEditorNoGenerated,
+	SchemaEditorGeneratedId,
 	SchemaQuote,
-	SchemaQuoteNoGenerated,
+	SchemaQuoteGeneratedId,
 } from './schema.effect'
 
 // ========================
 // Tables
 
 // Database with all tables
-export type EffectDatabaseNoGenerated = {
-	authors: TableAuthorsNoGeneratedNoTable
-	collections: TableCollectionsNoGeneratedNoTable
-	editors: TableEditorsNoGeneratedNoTable
-	quotes: TableQuotesNoGeneratedNoTable
-}
 export type EffectDatabase = {
-	authors: TableAuthors
-	collections: TableCollections
-	editors: TableEditors
-	quotes: TableQuotes
+	authors: TableAuthorsNoTable
+	collections: TableCollectionsNoTable
+	editors: TableEditorsNoTable
+	quotes: TableQuotesNoTable
+}
+export type EffectDatabaseGeneratedId = {
+	authors: TableAuthorsGeneratedId
+	collections: TableCollectionsGeneratedId
+	editors: TableEditorsGeneratedId
+	quotes: TableQuotesGeneratedId
 }
 
 export type TableName = 'quotes' | 'authors' | 'collections' | 'editors'
@@ -35,66 +35,62 @@ export type TableName = 'quotes' | 'authors' | 'collections' | 'editors'
 // Authors
 
 // Without Generated type
-export const TableAuthorsNoGenerated = Table(SchemaAuthorNoGenerated.fields)
-type TableAuthorsNoGenerated = typeof TableAuthorsNoGenerated.Encoded
-// Or without Generated type and table
-export type TableAuthorsNoGeneratedNoTable =
-	typeof SchemaAuthorNoGenerated.Encoded
-
-// Kysely actions
-export type AuthorNoGeneratedQuery = Selectable<TableAuthorsNoGeneratedNoTable>
-export type AuthorNoGeneratedInsert = Insertable<TableAuthorsNoGeneratedNoTable>
-export type AuthorNoGeneratedUpdate = Updateable<TableAuthorsNoGeneratedNoTable>
-
-// With Generated type
 export const TableAuthors = Table(SchemaAuthor.fields)
 type TableAuthors = typeof TableAuthors.Encoded
+// Or without table
+export type TableAuthorsNoTable = typeof SchemaAuthor.Encoded
+
+// Kysely actions
+export type AuthorQuery = Selectable<TableAuthorsNoTable>
+export type AuthorInsert = Insertable<TableAuthorsNoTable>
+export type AuthorUpdate = Updateable<TableAuthorsNoTable>
+
+// With Generated type
+export const TableAuthorsGeneratedId = Table(SchemaAuthorGeneratedId.fields)
+type TableAuthorsGeneratedId = typeof TableAuthorsGeneratedId.Encoded
 
 // ========================
 // Collections
 
 // Without Generated type
-export const TableCollectionsNoGenerated = Table(
-	SchemaCollectionNoGenerated.fields,
-)
-type TableCollectionsNoGenerated = typeof TableCollectionsNoGenerated.Encoded
-// Or without Generated type and table
-export type TableCollectionsNoGeneratedNoTable =
-	typeof SchemaCollectionNoGenerated.Encoded
-
-// With Generated type
 export const TableCollections = Table(SchemaCollection.fields)
 type TableCollections = typeof TableCollections.Encoded
+// Or without table
+export type TableCollectionsNoTable = typeof SchemaCollection.Encoded
+
+// With Generated type
+export const TableCollectionsGeneratedId = Table(
+	SchemaCollectionGeneratedId.fields,
+)
+type TableCollectionsGeneratedId = typeof TableCollectionsGeneratedId.Encoded
 
 // ========================
 // Editors
 
 // Without Generated type
-export const TableEditorsNoGenerated = Table(SchemaEditorNoGenerated.fields)
-type TableEditorsNoGenerated = typeof TableEditorsNoGenerated.Encoded
-// Or without Generated type and table
-export type TableEditorsNoGeneratedNoTable =
-	typeof SchemaEditorNoGenerated.Encoded
-
-// With Generated type
 export const TableEditors = Table(SchemaEditor.fields)
 type TableEditors = typeof TableEditors.Encoded
+// Or without table
+export type TableEditorsNoTable = typeof SchemaEditor.Encoded
+
+// With Generated type
+export const TableEditorsGeneratedId = Table(SchemaEditorGeneratedId.fields)
+type TableEditorsGeneratedId = typeof TableEditorsGeneratedId.Encoded
 
 // ========================
 // Quotes
 
 // Without Generated type
-export const TableQuotesNoGenerated = Table(SchemaQuoteNoGenerated.fields)
-type TableQuotesNoGenerated = typeof TableQuotesNoGenerated.Encoded
-// Or without Generated type and table
-export type TableQuotesNoGeneratedNoTable =
-	typeof SchemaQuoteNoGenerated.Encoded
-
-// Kysely actions
-export type QuoteNoGeneratedQuery = Selectable<TableQuotesNoGeneratedNoTable>
-export type QuoteNoGeneratedInsert = Insertable<TableQuotesNoGeneratedNoTable>
-export type QuoteNoGeneratedUpdate = Updateable<TableQuotesNoGeneratedNoTable>
-
-// With Generated type
 export const TableQuotes = Table(SchemaQuote.fields)
 type TableQuotes = typeof TableQuotes.Encoded
+// Or without table
+export type TableQuotesNoTable = typeof SchemaQuote.Encoded
+
+// Kysely actions
+export type QuoteQuery = Selectable<TableQuotesNoTable>
+export type QuoteInsert = Insertable<TableQuotesNoTable>
+export type QuoteUpdate = Updateable<TableQuotesNoTable>
+
+// With Generated type
+export const TableQuotesGeneratedId = Table(SchemaQuoteGeneratedId.fields)
+type TableQuotesGeneratedId = typeof TableQuotesGeneratedId.Encoded

@@ -1,33 +1,32 @@
 import * as S from '@effect/schema/Schema'
 import { Generated } from 'effect-sql-kysely'
-import { CommaSeparatedList } from './utils'
 
 // Authors
-export const SchemaAuthorNoGenerated = S.Struct({
+export const SchemaAuthor = S.Struct({
 	id: S.UUID,
 	fullname: S.String,
 	birth_date: S.optional(S.Date),
 })
-export const SchemaAuthor = S.Struct({
+export const SchemaAuthorGeneratedId = S.Struct({
 	id: Generated(S.UUID),
 	fullname: S.String,
 	birth_date: S.optional(S.Date),
 })
 
 // Collections
-export const SchemaCollectionNoGenerated = S.Struct({
+export const SchemaCollection = S.Struct({
 	id: S.UUID,
 	name: S.String,
 	parent_id: S.optional(S.UUID),
 })
-export const SchemaCollection = S.Struct({
+export const SchemaCollectionGeneratedId = S.Struct({
 	id: Generated(S.UUID),
 	name: S.String,
 	parent_id: S.optional(S.UUID),
 })
 
 // Editors
-export const SchemaEditorNoGenerated = S.Struct({
+export const SchemaEditor = S.Struct({
 	id: S.UUID,
 	text: S.optional(S.String),
 	fullname: S.optional(S.String),
@@ -36,7 +35,7 @@ export const SchemaEditorNoGenerated = S.Struct({
 	// collections_id: CommaSeparatedList(S.UUID),
 	collections_id: S.Data(S.Array(S.UUID)),
 })
-export const SchemaEditor = S.Struct({
+export const SchemaEditorGeneratedId = S.Struct({
 	id: Generated(S.UUID),
 	text: S.optional(S.String),
 	fullname: S.optional(S.String),
@@ -49,7 +48,7 @@ export const SchemaEditor = S.Struct({
 })
 
 // Quotes
-export const SchemaQuoteNoGenerated = S.Struct({
+export const SchemaQuote = S.Struct({
 	id: S.UUID,
 	text: S.String,
 	author_id: S.optional(S.UUID),
@@ -57,7 +56,7 @@ export const SchemaQuoteNoGenerated = S.Struct({
 	collections_id: S.Data(S.Array(S.UUID)),
 	created_at: S.Date,
 })
-export const SchemaQuote = S.Struct({
+export const SchemaQuoteGeneratedId = S.Struct({
 	id: Generated(S.UUID),
 	text: S.String,
 	author_id: S.optional(S.UUID),

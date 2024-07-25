@@ -3,7 +3,7 @@ import { Kysely, PostgresDialect } from 'kysely'
 import { Pool } from 'pg'
 
 import path from 'node:path'
-import type { EffectDatabase, EffectDatabaseNoGenerated } from './tables.effect'
+import type { EffectDatabase, EffectDatabaseGeneratedId } from './tables.effect'
 
 // Load environment variables
 dotenv.config({
@@ -19,14 +19,14 @@ export const dbConnectionEffect = new Pool({
 })
 
 // Without Generated type
-export const dbKyselyEffectNoGenerated = new Kysely<EffectDatabaseNoGenerated>({
+export const dbKyselyEffectNoGenerated = new Kysely<EffectDatabase>({
 	dialect: new PostgresDialect({
 		pool: dbConnectionEffect,
 	}),
 })
 
 // With Generated type
-export const dbKyselyEffect = new Kysely<EffectDatabase>({
+export const dbKyselyEffect = new Kysely<EffectDatabaseGeneratedId>({
 	// https://kysely-org.github.io/kysely-apidoc/classes/PostgresDialect.html
 	dialect: new PostgresDialect({
 		pool: dbConnectionEffect,

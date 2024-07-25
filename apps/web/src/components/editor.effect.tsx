@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { v7 as uuid } from 'uuid'
 
-import type { AuthorNoGeneratedQuery } from '@localfirst/core/tables.effect'
+import type { AuthorQuery } from '@localfirst/core/tables.effect'
 import { dbEffect } from '~effect'
 import { Button } from './button'
 
 type EditorProps = {
 	onSave: () => void
 	onCancel: () => void
-	authors: AuthorNoGeneratedQuery[]
+	authors: AuthorQuery[]
 }
 
 export const EditorEffect: React.FC<EditorProps> = ({

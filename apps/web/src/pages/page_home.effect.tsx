@@ -1,21 +1,16 @@
 import { useQuery } from '@powersync/react'
 import { useEffect, useState } from 'react'
 
-import type {
-	AuthorNoGeneratedQuery,
-	QuoteNoGeneratedQuery,
-} from '@localfirst/core/tables.effect'
+import type { AuthorQuery, QuoteQuery } from '@localfirst/core/tables.effect'
 import { Button, ContentItemEffect, EditorEffect } from '~components'
 
 export const PageHomeEffect = () => {
-	const watchQuotes = useQuery<QuoteNoGeneratedQuery>(
+	const watchQuotes = useQuery<QuoteQuery>(
 		'SELECT * FROM quotes ORDER BY id DESC',
 	)
-	const watchAuthorsEffect = useQuery<AuthorNoGeneratedQuery>(
-		'SELECT * FROM authors',
-	)
-	const [quotes, setQuotes] = useState<QuoteNoGeneratedQuery[]>([])
-	const [authors, setAuthors] = useState<AuthorNoGeneratedQuery[]>([])
+	const watchAuthorsEffect = useQuery<AuthorQuery>('SELECT * FROM authors')
+	const [quotes, setQuotes] = useState<QuoteQuery[]>([])
+	const [authors, setAuthors] = useState<AuthorQuery[]>([])
 	const [isEditorVisible, setIsEditorVisible] = useState(false)
 
 	useEffect(() => {
