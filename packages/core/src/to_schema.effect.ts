@@ -1,5 +1,5 @@
 import { AST, Schema as S } from '@effect/schema'
-import { Column, ColumnType, Schema, Table } from '@powersync/common'
+import { Column, ColumnType, Schema, Table, TableV2 } from '@powersync/common'
 import { isColumnTypes } from 'effect-sql-kysely'
 
 /**
@@ -18,8 +18,12 @@ export function toPowerSyncSchema<Tables extends Record<string, S.Schema.Any>>(
 					: S.encodedSchema(table).ast,
 			)
 
-			return new Table({
-				name,
+			// return new Table({
+			// 	name,
+			// 	columns: properties.map(toPowerSyncColumn),
+			// })
+			return new TableV2({
+				options: { name },
 				columns: properties.map(toPowerSyncColumn),
 			})
 		}),
@@ -52,6 +56,8 @@ export function toPowerSyncColumnType(ast: AST.AST): ColumnType {
 		case 'Refinement':
 		case 'Transformation':
 			return toPowerSyncColumnType(ast.from)
+		case 'TypeLiteral':
+			return ColumnType.TEXT
 		case 'Suspend':
 			return toPowerSyncColumnType(ast.f())
 		case 'Union': {
@@ -62,7 +68,7 @@ export function toPowerSyncColumnType(ast: AST.AST): ColumnType {
 						.map(_ => toPowerSyncColumnType(_)),
 				),
 			)
-			if (types.length === 1) {
+			if (types.length === 1 && types[0] !== undefined) {
 				return types[0]
 			}
 
@@ -78,7 +84,7 @@ export function toPowerSyncColumnType(ast: AST.AST): ColumnType {
 			}
 			const uniqueTypes = Array.from(new Set(allTypes))
 
-			if (uniqueTypes.length === 1) {
+			if (uniqueTypes.length === 1 && uniqueTypes[0] !== undefined) {
 				return uniqueTypes[0]
 			}
 
