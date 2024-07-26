@@ -5,6 +5,8 @@ import type {
 } from '@powersync/web'
 import type { IHeadlessSessionClient } from '@stytch/vanilla-js'
 
+import { logger } from '~utils'
+
 export class Connector implements PowerSyncBackendConnector {
 	constructor(private sessionToken: IHeadlessSessionClient) {}
 
@@ -29,12 +31,13 @@ export class Connector implements PowerSyncBackendConnector {
 	}
 
 	async uploadData(database: AbstractPowerSyncDatabase): Promise<void> {
-		console.debug('💾 Handling operation...')
+		logger.debug('💾 Handling operation...')
 		const transaction = await database.getNextCrudTransaction()
 		if (!transaction) return
 
 		try {
-			console.debug(JSON.stringify({ transactions: transaction.crud }))
+			logger.debug(JSON.stringify({ transactions: transaction.crud }))
+
 			// Convert your transaction CRUD operations into a format suitable for your backend
 			const response = await fetch('http://localhost:3001/uploadData', {
 				method: 'POST',
@@ -45,11 +48,11 @@ export class Connector implements PowerSyncBackendConnector {
 			})
 
 			const responseData = await response.json()
-			console.debug(responseData)
+			logger.debug(responseData)
 
 			await transaction.complete()
 		} catch (error) {
-			console.error('Error handling the operation:', error)
+			logger.error('Error handling the operation:', error)
 		}
 	}
 }

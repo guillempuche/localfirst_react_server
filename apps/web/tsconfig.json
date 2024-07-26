@@ -4,7 +4,6 @@
 		"target": "ESNext",
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		"module": "ESNext",
-		/* Bundler mode */
 		"moduleResolution": "bundler",
 		"jsx": "react-jsx",
 		"exactOptionalPropertyTypes": false,
@@ -13,9 +12,9 @@
 			"@localfirst/core/*": ["../../packages/core/src/*"],
 			"~components": ["./src/components/index"],
 			"~effect": ["./src/db.effect"],
-			"~mock": ["./src/mock/index"],
 			"~pages": ["./src/pages/index"],
-			"~providers": ["./src/providers/index"]
+			"~providers": ["./src/providers/index"],
+			"~utils": ["./src/utils"]
 		},
 		"types": ["vite/client"]
 	},

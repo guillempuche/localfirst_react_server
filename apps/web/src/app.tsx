@@ -14,6 +14,7 @@ import { Tooltip } from 'react-tooltip'
 import { Button } from '~components'
 import { PageLogin } from '~pages'
 import { TokenAuthenticator } from '~providers'
+import { logger } from '~utils'
 
 const PageProfile = lazy(() =>
 	import('~pages').then(module => ({ default: module.PageProfile })),
@@ -122,7 +123,7 @@ const RequireAuth = ({ children }: { children: ReactNode }) => {
 	const { user } = useStytchUser()
 
 	if (!user) {
-		console.debug('User not logged. Redirecting to the login page...')
+		logger.debug('User not logged. Redirecting to the login page...')
 
 		return <Navigate to='/login' state={{ from: location }} replace />
 	}

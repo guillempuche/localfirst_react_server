@@ -1,10 +1,18 @@
+import { Buffer } from 'buffer'
 import { PowerSyncContext } from '@powersync/react'
 import type { AbstractPowerSyncDatabase } from '@powersync/web'
 import { useStytch } from '@stytch/react'
-import { type ReactNode, useEffect, useState } from 'react'
+
+import { type ReactNode, Suspense, useEffect, useState } from 'react'
 
 import { powerSyncInstanceEffect } from '~effect'
+import { logger } from '~utils'
 import { Connector } from '../powersync_connector'
+
+// Polyfill for WebSockets https://github.com/powersync-ja/powersync-js/blob/main/demos/react-supabase-todolist/src/components/providers/SystemProvider.tsx
+if (typeof self.Buffer === 'undefined') {
+	self.Buffer = Buffer
+}
 
 export const PowerSyncProviderEffect = ({
 	children,
@@ -15,36 +23,41 @@ export const PowerSyncProviderEffect = ({
 	)
 
 	useEffect(() => {
+		// For console testing purposes
+		;(window as any)._powersync = powerSync
+
 		const initPowerSync = async () => {
 			try {
-				console.debug('⏳ Initializing the PowerSync instance using Effect...')
+				logger.debug('⏳ Initializing the PowerSync instance using Effect...')
 
-				const powerSyncInstance = powerSyncInstanceEffect
-				await powerSyncInstance.init()
+				await powerSyncInstanceEffect.init()
 
-				console.debug('⏳ PowerSync is verifying the session...')
+				logger.debug('⏳ PowerSync is verifying the session...')
 
 				// Try and connect, this will setup shared sync workers. This will fail due
 				// to not having a valid endpoint, but it will try, which is all that matters.
-				await powerSyncInstance.connect(new Connector(session))
+				await powerSyncInstanceEffect.connect(new Connector(session))
 
-				setPowerSync(powerSyncInstance)
-				console.debug('✅ PowerSync connected using Effect')
+				setPowerSync(powerSyncInstanceEffect)
+
+				logger.debug('✅ PowerSync connected using Effect')
 			} catch (err) {
-				console.error(err)
+				logger.error(err)
 			}
 		}
 
 		initPowerSync()
-	}, [session])
+	}, [session, powerSync])
 
 	if (!powerSync) {
 		return <div>Loading PowerSync using Effect...</div>
 	}
 
 	return (
-		<PowerSyncContext.Provider value={powerSync}>
-			{children}
-		</PowerSyncContext.Provider>
+		<Suspense fallback={<div>Loading PowerSync...</div>}>
+			<PowerSyncContext.Provider value={powerSync}>
+				{children}
+			</PowerSyncContext.Provider>
+		</Suspense>
 	)
 }
