@@ -1,24 +1,22 @@
 {
-  "name": "@localfirst/core",
-  "version": "1.0.0",
-  "description": "Core utilities and types for the monorepo",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "scripts": {},
-  "dependencies": {
-    "@effect/schema": "^0.67.22",
-    "@powersync/common": "^1.11.1",
-    "dotenv": "^16.4.5",
-    "effect": "^3.3.1",
-    "effect-sql-kysely": "^0.0.3",
-    "kysely": "^0.27.3",
-    "pg": "^8.11.3"
-  },
-  "devDependencies": {
-    "@types/pg": "^8.11.2",
-    "typescript": "^5.4.5"
-  }
+	"name": "@localfirst/core",
+	"version": "1.0.0",
+	"description": "Core utilities and types for the monorepo",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": ["dist"],
+	"scripts": {},
+	"dependencies": {
+		"@effect/schema": "^0.67.22",
+		"@powersync/common": "^1.14.0",
+		"dotenv": "^16.4.5",
+		"effect": "^3.3.1",
+		"effect-sql-kysely": "^0.0.3",
+		"kysely": "^0.27.3",
+		"pg": "^8.11.3"
+	},
+	"devDependencies": {
+		"@types/pg": "^8.11.2",
+		"typescript": "^5.4.5"
+	}
 }

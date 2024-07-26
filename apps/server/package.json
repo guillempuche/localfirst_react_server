@@ -1,27 +1,27 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "Server application",
-  "type": "module",
-  "main": "dist/index.effect.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc --build",
-    "start": "tsx watch src/server.ts",
-    "start-effect": "tsx watch src/server.effect.ts"
-  },
-  "dependencies": {
-    "@localfirst/core": "workspace:*",
-    "@powersync/common": "^1.11.1",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.21",
-    "@types/node": "^20.11.20",
-    "tsx": "^4.15.4",
-    "typescript": "^5.4.5"
-  }
+	"name": "server",
+	"version": "1.0.0",
+	"description": "Server application",
+	"type": "module",
+	"main": "dist/index.effect.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc --build",
+		"start": "tsx watch src/server.ts",
+		"start-effect": "tsx watch src/server.effect.ts"
+	},
+	"dependencies": {
+		"@localfirst/core": "workspace:*",
+		"@powersync/common": "^1.14.0",
+		"cors": "^2.8.5",
+		"dotenv": "^16.4.5",
+		"express": "^4.19.2"
+	},
+	"devDependencies": {
+		"@types/cors": "^2.8.17",
+		"@types/express": "^4.17.21",
+		"@types/node": "^20.11.20",
+		"tsx": "^4.15.4",
+		"typescript": "^5.4.5"
+	}
 }
