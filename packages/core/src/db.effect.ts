@@ -1,8 +1,8 @@
+import path from 'node:path'
 import dotenv from 'dotenv'
 import { Kysely, PostgresDialect } from 'kysely'
 import { Pool } from 'pg'
 
-import path from 'node:path'
 import type { EffectDatabase, EffectDatabaseGeneratedId } from './tables.effect'
 
 // Load environment variables

@@ -12,6 +12,7 @@
 		"noFallthroughCasesInSwitch": true,
 		"useDefineForClassFields": true,
 		"noUnusedLocals": true,
+		"noUncheckedIndexedAccess": true,
 		"noUnusedParameters": true,
 		"module": "ESNext",
 		"moduleResolution": "NodeNext",
