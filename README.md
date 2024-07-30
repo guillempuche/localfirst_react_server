@@ -34,6 +34,9 @@ We use [Stytch](https://stytch.com/) for authentication due to its compatibility
 Steps for setting up Stytch:
 
 - Register an account and create a project on Stytch.
+  - You will be prompted to select an "Authentication Type" - Consumer or B2B SaaS. 
+  - The steps in this guide are for Consumer Authentication
+  - B2B SaaS is also compatible but the steps are different, contact the PowerSync team on their [discord](https://discord.gg/powersync) if you need assistance
 - Copy the project's `public token` from [Stytch's API Keys](https://stytch.com/dashboard/api-keys?env=test) and paste it into `.env`.
 - Add your localhost domain `http://localhost:3000` to your Stytch project [SDK Configuration](https://stytch.com/dashboard/sdk-configuration?env=test).
 - Ensure the email link is enabled under the `Authentication products` section.
