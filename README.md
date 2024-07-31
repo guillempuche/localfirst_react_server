@@ -105,10 +105,10 @@ Flyway is an industry-standard tool for managing database migrations with more e
    - To apply the migrations using Flyway, run the following command:
 
      ```sh
-     flyway -configFiles="/<computer_path_to_repo>/backend/flyway.toml" migrate
+     flyway -configFiles="/<full_path_to_repo>/apps/migration/flyway.toml" migrate
      ```
 
-   - Replace `"/path/to/your/backend/flyway.toml"` with the actual path to your Flyway configuration file. This command instructs Flyway to apply the SQL migration files found in the locations specified within your configuration file.
+   - Replace `"/<full_path_to_repo>/apps/migration/flyway.toml"` with the actual path to your Flyway configuration file. This command instructs Flyway to apply the SQL migration files found in the locations specified within your configuration file.
 
 #### [To-do] Using a Kysely Script
 
