@@ -2,10 +2,14 @@ import { useQuery } from '@powersync/react'
 import { useEffect, useState } from 'react'
 
 import type { Authors, Quotes } from '@localfirst/core/schema'
+import { db } from 'src/db'
 import { ContentItem } from '~components'
 
 export const PageHome = () => {
 	const watchQuotes = useQuery<Quotes>('SELECT * FROM quotes ORDER BY id DESC')
+	// const watchQuotes = useQuery<Quotes>(
+	// 	db.selectFrom('quotes').orderBy('id', 'desc'),
+	// )
 	const watchAuthors = useQuery<Authors>('SELECT * FROM authors')
 	const [quotes, setQuotes] = useState<Quotes[]>([])
 	const [authors, setAuthors] = useState<Authors[]>([])

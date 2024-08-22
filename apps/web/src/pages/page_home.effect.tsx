@@ -3,11 +3,15 @@ import { useEffect, useState } from 'react'
 
 import type { AuthorQuery, QuoteQuery } from '@localfirst/core/tables.effect'
 import { Button, ContentItemEffect, EditorEffect } from '~components'
+import { dbEffect } from '~effect'
 
 export const PageHomeEffect = () => {
 	const watchQuotes = useQuery<QuoteQuery>(
 		'SELECT * FROM quotes ORDER BY id DESC',
 	)
+	// const watchQuotesEffect = useQuery<QuoteQuery>(
+	// 	dbEffect.selectFrom('quotes').orderBy('id', 'desc'),
+	// )
 	const watchAuthorsEffect = useQuery<AuthorQuery>('SELECT * FROM authors')
 	const [quotes, setQuotes] = useState<QuoteQuery[]>([])
 	const [authors, setAuthors] = useState<AuthorQuery[]>([])

@@ -29,6 +29,7 @@ export const powerSyncInstanceEffect = new PowerSyncDatabase({
 	schema: sqliteSchemaEffect,
 	database: {
 		dbFilename: `${import.meta.env.VITE_DB_DATABASE}.sqlite`,
+		debugMode: process.env.NODE_ENV === 'development',
 	},
 	flags: {
 		// This is disabled once CSR+SSR functionality is verified to be working correctly

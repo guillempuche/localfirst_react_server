@@ -1,6 +1,6 @@
 import { Table } from 'effect-sql-kysely'
-
 import type { Insertable, Selectable, Updateable } from 'kysely'
+
 import {
 	SchemaAuthor,
 	SchemaAuthorGeneratedId,

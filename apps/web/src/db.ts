@@ -2,9 +2,9 @@ import { wrapPowerSyncWithKysely } from '@powersync/kysely-driver'
 import {
 	Column,
 	ColumnType,
+	PowerSyncDatabase,
 	Schema,
 	Table,
-	WASQLitePowerSyncDatabaseOpenFactory,
 } from '@powersync/web'
 
 import type { Database } from '@localfirst/core/schema'
@@ -58,9 +58,12 @@ export const sqliteSchema = new Schema([
 // whether online or offline. In addition, it automatically uploads changes
 // to your app backend when connected.
 // More here https://docs.powersync.com/client-sdk-references/js-web
-export const powerSyncFactory = new WASQLitePowerSyncDatabaseOpenFactory({
+export const powerSyncInstance = new PowerSyncDatabase({
 	schema: sqliteSchema,
-	dbFilename: `${import.meta.env.VITE_DB_DATABASE}.sqlite`,
+	database: {
+		dbFilename: `${import.meta.env.VITE_DB_DATABASE}.sqlite`,
+		debugMode: process.env.NODE_ENV === 'development',
+	},
 	flags: {
 		// This is disabled once CSR+SSR functionality is verified to be working correctly
 		disableSSRWarning: true,
@@ -68,9 +71,7 @@ export const powerSyncFactory = new WASQLitePowerSyncDatabaseOpenFactory({
 })
 
 // For CRUD SQL queries.
-export const db = wrapPowerSyncWithKysely<Database>(
-	powerSyncFactory.getInstance(),
-)
+export const db = wrapPowerSyncWithKysely<Database>(powerSyncInstance)
 
 export interface Quote {
 	id: string
