@@ -6,10 +6,10 @@ import { db } from 'src/db'
 import { ContentItem } from '~components'
 
 export const PageHome = () => {
-	const watchQuotes = useQuery<Quotes>('SELECT * FROM quotes ORDER BY id DESC')
-	// const watchQuotes = useQuery<Quotes>(
-	// 	db.selectFrom('quotes').orderBy('id', 'desc'),
-	// )
+	// const watchQuotes = useQuery<Quotes>('SELECT * FROM quotes ORDER BY id DESC')
+	const watchQuotes = useQuery(
+		db.selectFrom('quotes').orderBy('id', 'desc').selectAll(),
+	)
 	const watchAuthors = useQuery<Authors>('SELECT * FROM authors')
 	const [quotes, setQuotes] = useState<Quotes[]>([])
 	const [authors, setAuthors] = useState<Authors[]>([])
