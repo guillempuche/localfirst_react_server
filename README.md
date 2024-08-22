@@ -34,7 +34,7 @@ We use [Stytch](https://stytch.com/) for authentication due to its compatibility
 Steps for setting up Stytch:
 
 - Register an account and create a project on Stytch.
-  - You will be prompted to select an "Authentication Type" - Consumer or B2B SaaS. 
+  - You will be prompted to select an "Authentication Type" - Consumer or B2B SaaS.
   - The steps in this guide are for Consumer Authentication
   - B2B SaaS is also compatible but the steps are different, contact the PowerSync team on their [discord](https://discord.gg/powersync) if you need assistance
 - Copy the project's `public token` from [Stytch's API Keys](https://stytch.com/dashboard/api-keys?env=test) and paste it into `.env`.
@@ -149,12 +149,13 @@ Debugging in Chrome with VSCode:
   - Guides
   - Introduction <https://github.com/antoine-coulon/effect-introduction>
   - Schema <https://github.com/Effect-TS/effect/blob/main/packages/schema/README.md>
+  - Best practices <https://ethanniser.dev/blog/effect-best-practices/>
   - Server
   <https://github.com/Effect-TS/effect/blob/main/packages/rpc-http/examples/router.ts>
-  - Server with open telemetry <https://github.com/IMax153/advanced-effect-workshop/blob/main/workshop/solutions/session-04/exercise-02.ts>
-    - Complete projects
-      - <https://github.com/effect-app/sample/>
-      - <https://github.com/ccntrq/git-jira-branch/blob/master/src/types.ts>
-      - <https://github.com/TylorS/typed/blob/development/examples/todomvc>
-      - Incl. auth, migrations <https://github.com/datner/effect-remix>
+  - Server with open telemetry <https://github.com/IMax153/advanced-effect-workshop/blob/main/workshop/solutions/session-04/exercise-02.ts>, <https://github.com/lucas-barake/invite-system-demo/tree/telemetry>
+  - Complete projects
+  - <https://github.com/effect-app/sample/>
+  - <https://github.com/ccntrq/git-jira-branch/blob/master/src/types.ts>
+  - <https://github.com/TylorS/typed/blob/development/examples/todomvc>
+  - Incl. auth, migrations <https://github.com/datner/effect-remix>
 - [Kysely](https://kysely.dev/docs/), a query builder for fetching SQL data, alongside PowerSync. API documentation and examples are available at [Kysely API Docs](https://kysely-org.github.io/kysely-apidoc) and [Kysely GitHub](https://github.com/kysely-org/kysely/blob/master/example), respectively.
