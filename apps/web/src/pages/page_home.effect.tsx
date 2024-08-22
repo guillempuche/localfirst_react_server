@@ -12,7 +12,10 @@ export const PageHomeEffect = () => {
 	const watchQuotesEffect = useQuery(
 		dbEffect.selectFrom('quotes').orderBy('id', 'desc').selectAll(),
 	)
-	const watchAuthorsEffect = useQuery<AuthorQuery>('SELECT * FROM authors')
+	const watchAuthors = useQuery<AuthorQuery>('SELECT * FROM authors')
+	const watchAuthorsEffect = useQuery(
+		dbEffect.selectFrom('authors').orderBy('id', 'desc').selectAll(),
+	)
 	const [quotes, setQuotes] = useState<QuoteQuery[]>([])
 	const [authors, setAuthors] = useState<AuthorQuery[]>([])
 	const [isEditorVisible, setIsEditorVisible] = useState(false)
